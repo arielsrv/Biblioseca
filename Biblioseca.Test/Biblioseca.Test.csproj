@@ -70,6 +70,7 @@
     <Reference Include="System.Transactions" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataAccess\AuthorDaoTest.cs" />
     <Compile Include="Mapping\AuthorTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -78,6 +79,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Biblioseca.DataAccess\Biblioseca.DataAccess.csproj">
+      <Project>{8d5f9a06-5683-4bd4-b901-909bada80b8c}</Project>
+      <Name>Biblioseca.DataAccess</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Biblioseca.Model\Biblioseca.Model.csproj">
       <Project>{38f28d76-cfe5-43c2-b4b3-77f6344c994d}</Project>
       <Name>Biblioseca.Model</Name>

@@ -1,34 +1,26 @@
-﻿using Biblioseca.Model;
+﻿using System;
+using System.Collections.Generic;
 using NHibernate;
 using NHibernate.Cfg;
-using System;
 
 namespace Biblioseca.ConsoleApp
 {
-    internal class Program
+    public class Program
     {
-        private static void Main(string[] args)
+        private static void Main()
         {
             ISessionFactory sessionFactory = new Configuration()
                 .Configure()
                 .BuildSessionFactory();
 
             ISession session = sessionFactory.OpenSession();
+            session.Close();
 
-            Category category = session.Get<Category>(4);
-            Author author = session.Get<Author>(5);
+            List<int> values1 = new List<int>();
+            values1.Add(1);
 
-            Book book = new Book
-            {
-                ISBN = "ASD",
-                Author = author,
-                Category = category,
-                Description = "description",
-                Title = "a title",
-                Price = 102.0
-            };
-
-            session.Save(book);
+            List<string> values2 = new List<string>();
+            values2.Add("hello world!");
 
             Console.ReadKey();
         }
