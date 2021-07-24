@@ -3,7 +3,6 @@ using Biblioseca.Model;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NHibernate;
 using NHibernate.Cfg;
-using System.Linq;
 
 namespace Biblioseca.Test.Mapping
 {

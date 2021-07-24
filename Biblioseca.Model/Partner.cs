@@ -2,17 +2,15 @@ using System.Collections.Generic;
 
 namespace Biblioseca.Model
 {
-    public class Partner
+    public class Partner : Entity
     {
-        public virtual int Id { get; set; }
+        public Partner()
+        {
+            Borrows = new HashSet<Borrow>();
+        }
         public virtual string FirstName { get; set; }
         public virtual string LastName { get; set; }
         public virtual string Username { get; set; }
         public virtual ISet<Borrow> Borrows { get; set; }
-
-        public Partner()
-        {
-            this.Borrows = new HashSet<Borrow>();
-        }
     }
 }

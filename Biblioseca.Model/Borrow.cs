@@ -1,11 +1,9 @@
 using System;
-using System.Collections.Generic;
 
 namespace Biblioseca.Model
 {
-    public class Borrow
+    public class Borrow : Entity
     {
-        public virtual int Id { get; set; }
         public virtual Book Book { get; set; }
         public virtual Partner Partner { get; set; }
         public virtual DateTime BorrowedAt { get; set; }

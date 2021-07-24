@@ -1,10 +1,7 @@
-﻿using System.Collections.Generic;
-
-namespace Biblioseca.Model
+﻿namespace Biblioseca.Model
 {
-    public class Author
+    public class Author : Entity
     {
-        public virtual int Id { get; set; }
         public virtual string FirstName { get; set; }
         public virtual string LastName { get; set; }
     }
