@@ -10,10 +10,10 @@
             <column name="BookId" sql-type="int" not-null="true"/>
         </many-to-one>
         <many-to-one name="Partner" class="Partner">
-            <column name="PartnerId" sql-type="int" not-null="false"/>
+            <column name="PartnerId" sql-type="int" not-null="false" />
         </many-to-one>
         <property name="BorrowedAt">
-            <column name="BorrowedAt" sql-type="Datetime" not-null="true"/>
+            <column name="BorrowedAt" sql-type="Datetime" not-null="true" />
         </property>
         <property name="ReturnedAt">
             <column name="ReturnedAt" sql-type="Datetime" not-null="true"/>

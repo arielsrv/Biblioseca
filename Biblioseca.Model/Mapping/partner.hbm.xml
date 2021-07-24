@@ -15,5 +15,9 @@
         <property name="Username">
             <column name="Username" length="200" not-null="true"/>
         </property>
+        <set name="Borrows" lazy="true" inverse="true" cascade="all-delete-orphan">
+            <key column="PartnerId"/>
+            <one-to-many class="Borrow"/>
+        </set>
     </class>
 </hibernate-mapping>
