@@ -18,6 +18,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Biblioseca.Test", "Bibliose
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Biblioseca.DataAccess", "Biblioseca.DataAccess\Biblioseca.DataAccess.csproj", "{8D5F9A06-5683-4BD4-B901-909BADA80B8C}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "scripts", "scripts", "{61786CF9-12B1-47D9-90C2-F39A1A68EE99}"
+ProjectSection(SolutionItems) = preProject
+	scripts\db.sql = scripts\db.sql
+EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
