@@ -62,11 +62,15 @@
   <ItemGroup>
     <Compile Include="Author.cs" />
     <Compile Include="Book.cs" />
+    <Compile Include="Borrow.cs" />
     <Compile Include="Category.cs" />
+    <Compile Include="Partner.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Mapping\author.hbm.xml" />
+    <EmbeddedResource Include="Mapping\borrows.hbm.xml" />
+    <EmbeddedResource Include="Mapping\partner.hbm.xml" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
