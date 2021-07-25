@@ -63,7 +63,11 @@
     </ItemGroup>
     <ItemGroup>
         <Compile Include="AuthorDao.cs" />
+        <Compile Include="BookDao.cs" />
         <Compile Include="Dao.cs" />
+        <Compile Include="Filters\BookFilterDto.cs" />
+        <Compile Include="IAuthorDao.cs" />
+        <Compile Include="IBookDao.cs" />
         <Compile Include="IDao.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
     </ItemGroup>

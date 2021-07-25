@@ -71,6 +71,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataAccess\AuthorDaoTest.cs" />
+    <Compile Include="DataAccess\BookDaoTest.cs" />
     <Compile Include="Mapping\AuthorTest.cs" />
     <Compile Include="Mapping\BorrowTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
