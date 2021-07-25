@@ -49,16 +49,16 @@ namespace Biblioseca.Service
                 throw new ApplicationException("Libro prestado. ");
             }
 
-            Borrow newBorrow = new Borrow
+            Borrow borrow = new Borrow
             {
                 Book = book,
                 Partner = partner,
                 BorrowedAt = DateTime.Now
             };
 
-            borrowDao.Save(newBorrow);
+            borrowDao.Save(borrow);
 
-            return newBorrow;
+            return borrow;
         }
     }
 }

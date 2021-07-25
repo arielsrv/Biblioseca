@@ -13,7 +13,10 @@ namespace Biblioseca.DataAccess
             this.sessionFactory = sessionFactory;
         }
 
-        public virtual ISession Session => this.sessionFactory.GetCurrentSession();
+        public virtual ISession Session
+        {
+            get { return this.sessionFactory.GetCurrentSession(); }
+        }
 
         public void Save(T entity)
         {
