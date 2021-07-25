@@ -1,7 +1,5 @@
 using System.Collections.Generic;
 using System.Linq;
-using Biblioseca.DataAccess.Books;
-using Biblioseca.DataAccess.Books.Filters;
 using Biblioseca.DataAccess.Borrows;
 using Biblioseca.Model;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
