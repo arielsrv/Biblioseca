@@ -1,6 +1,6 @@
 using Biblioseca.Model;
 
-namespace Biblioseca.DataAccess
+namespace Biblioseca.DataAccess.Books
 {
     public interface IBookDao : IDao<Book>
     {

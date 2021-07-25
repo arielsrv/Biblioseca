@@ -1,10 +1,10 @@
 using System.Collections.Generic;
-using Biblioseca.DataAccess.Filters;
+using Biblioseca.DataAccess.Books.Filters;
 using Biblioseca.Model;
 using NHibernate;
 using NHibernate.Criterion;
 
-namespace Biblioseca.DataAccess
+namespace Biblioseca.DataAccess.Books
 {
     public class BookDao : Dao<Book>, IBookDao
     {
@@ -14,7 +14,7 @@ namespace Biblioseca.DataAccess
 
         public IEnumerable<Book> GetByFilter(BookFilterDto bookFilterDto)
         {
-            ICriteria criteria = this.GetCurrentSession()
+            ICriteria criteria = this.Session
                 .CreateCriteria<Book>();
 
             if (!string.IsNullOrEmpty(bookFilterDto.Title))
@@ -24,7 +24,8 @@ namespace Biblioseca.DataAccess
 
             if (!string.IsNullOrEmpty(bookFilterDto.AuthorFirstName))
             {
-                criteria.CreateCriteria("Author").Add(Restrictions.Like("FirstName", bookFilterDto.AuthorFirstName, MatchMode.Anywhere));
+                criteria.CreateCriteria("Author")
+                    .Add(Restrictions.Like("FirstName", bookFilterDto.AuthorFirstName, MatchMode.Anywhere));
             }
 
             return criteria.List<Book>();

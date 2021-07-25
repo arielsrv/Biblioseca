@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Text;
 using NHibernate;
 using NHibernate.Criterion;
 
@@ -14,39 +13,35 @@ namespace Biblioseca.DataAccess
             this.sessionFactory = sessionFactory;
         }
 
-        protected ISession GetCurrentSession()
-        {
-            return this.sessionFactory
-                .GetCurrentSession();
-        }
+        public virtual ISession Session => this.sessionFactory.GetCurrentSession();
 
         public void Save(T entity)
         {
-            this.GetCurrentSession()
+            Session
                 .Save(entity);
         }
 
         public void Delete(T entity)
         {
-            this.GetCurrentSession()
+            this.Session
                 .Delete(entity);
         }
 
-        public T Get(int id)
+        public virtual T Get(int id)
         {
-            return this.GetCurrentSession()
+            return this.Session
                 .Get<T>(id);
         }
 
         public IEnumerable<T> GetAll()
         {
-            return this.GetCurrentSession()
+            return this.Session
                 .Query<T>();
         }
 
         public T GetUniqueByQuery(string queryString, IDictionary<string, object> parameters)
         {
-            IQuery query = this.GetCurrentSession()
+            IQuery query = this.Session
                 .CreateQuery(queryString);
 
             foreach (KeyValuePair<string, object> keyValue in parameters)
@@ -59,7 +54,7 @@ namespace Biblioseca.DataAccess
 
         public T GetUniqueByQuery(IDictionary<string, object> parameters)
         {
-            ICriteria criteria = this.GetCurrentSession()
+            ICriteria criteria = this.Session
                 .CreateCriteria(typeof(T));
 
             foreach (KeyValuePair<string, object> keyValue in parameters)

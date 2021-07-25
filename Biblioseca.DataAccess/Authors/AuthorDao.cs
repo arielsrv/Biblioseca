@@ -1,7 +1,7 @@
 using Biblioseca.Model;
 using NHibernate;
 
-namespace Biblioseca.DataAccess
+namespace Biblioseca.DataAccess.Authors
 {
     public class AuthorDao : Dao<Author>, IAuthorDao
     {

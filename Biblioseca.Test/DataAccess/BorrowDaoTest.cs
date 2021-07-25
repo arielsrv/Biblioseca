@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using System.Linq;
-using Biblioseca.DataAccess;
 using Biblioseca.DataAccess.Books;
 using Biblioseca.DataAccess.Books.Filters;
+using Biblioseca.DataAccess.Borrows;
 using Biblioseca.Model;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NHibernate;
@@ -12,7 +12,7 @@ using NHibernate.Context;
 namespace Biblioseca.Test.DataAccess
 {
     [TestClass]
-    public class BookDaoTest
+    public class BorrowDaoTest
     {
         private ISessionFactory sessionFactory;
         private ISession session;
@@ -37,27 +37,21 @@ namespace Biblioseca.Test.DataAccess
         [TestMethod]
         public void GetAll()
         {
-            BookDao bookDao = new BookDao(this.sessionFactory);
+            BorrowDao borrowDao = new BorrowDao(this.sessionFactory);
 
-            IEnumerable<Book> books = bookDao.GetAll();
+            IEnumerable<Borrow> borrows = borrowDao.GetAll();
 
-            Assert.IsTrue(books.Any());
+            Assert.IsTrue(borrows.Any());
         }
 
         [TestMethod]
-        public void GetByFilter()
+        public void GetByBoook()
         {
-            BookDao bookDao = new BookDao(this.sessionFactory);
+            BorrowDao borrowDao = new BorrowDao(this.sessionFactory);
 
-            BookFilterDto bookFilterDto = new BookFilterDto
-            {
-                Title = "Avengers",
-                AuthorFirstName = "Steve"
-            };
+            IEnumerable<Borrow> borrows = borrowDao.GetBorrowsByBookId(1);
 
-            IEnumerable<Book> books = bookDao.GetByFilter(bookFilterDto);
-
-            Assert.IsTrue(books.Any());
+            Assert.IsTrue(borrows.Any());
         }
     }
 }

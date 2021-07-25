@@ -23,6 +23,8 @@ ProjectSection(SolutionItems) = preProject
 	scripts\db.sql = scripts\db.sql
 EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Biblioseca.Service", "Biblioseca.Service\Biblioseca.Service.csproj", "{82A4DE05-7D9E-4FD5-9B9F-0B9815E4301F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{8D5F9A06-5683-4BD4-B901-909BADA80B8C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8D5F9A06-5683-4BD4-B901-909BADA80B8C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8D5F9A06-5683-4BD4-B901-909BADA80B8C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{82A4DE05-7D9E-4FD5-9B9F-0B9815E4301F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{82A4DE05-7D9E-4FD5-9B9F-0B9815E4301F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{82A4DE05-7D9E-4FD5-9B9F-0B9815E4301F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{82A4DE05-7D9E-4FD5-9B9F-0B9815E4301F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,4 +1,4 @@
-namespace Biblioseca.DataAccess.Filters
+namespace Biblioseca.DataAccess.Books.Filters
 {
     public class BookFilterDto
     {

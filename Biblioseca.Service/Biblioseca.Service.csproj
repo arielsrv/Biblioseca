@@ -4,11 +4,11 @@
     <PropertyGroup>
         <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
         <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-        <ProjectGuid>{8D5F9A06-5683-4BD4-B901-909BADA80B8C}</ProjectGuid>
+        <ProjectGuid>{82A4DE05-7D9E-4FD5-9B9F-0B9815E4301F}</ProjectGuid>
         <OutputType>Library</OutputType>
         <AppDesignerFolder>Properties</AppDesignerFolder>
-        <RootNamespace>Biblioseca.DataAccess</RootNamespace>
-        <AssemblyName>Biblioseca.DataAccess</AssemblyName>
+        <RootNamespace>Biblioseca.Service</RootNamespace>
+        <AssemblyName>Biblioseca.Service</AssemblyName>
         <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
         <FileAlignment>512</FileAlignment>
     </PropertyGroup>
@@ -32,53 +32,20 @@
         <WarningLevel>4</WarningLevel>
     </PropertyGroup>
     <ItemGroup>
-        <Reference Include="Antlr3.Runtime, Version=3.5.0.2, Culture=neutral, PublicKeyToken=eb42632606e9261f">
-          <HintPath>..\packages\Antlr3.Runtime.3.5.1\lib\net40-client\Antlr3.Runtime.dll</HintPath>
-          <Private>True</Private>
-        </Reference>
-        <Reference Include="Iesi.Collections, Version=4.0.0.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4">
-          <HintPath>..\packages\Iesi.Collections.4.0.4\lib\net461\Iesi.Collections.dll</HintPath>
-          <Private>True</Private>
-        </Reference>
-        <Reference Include="Microsoft.CSharp" />
-        <Reference Include="NHibernate, Version=5.3.0.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4">
-          <HintPath>..\packages\NHibernate.5.3.9\lib\net461\NHibernate.dll</HintPath>
-          <Private>True</Private>
-        </Reference>
-        <Reference Include="Remotion.Linq, Version=2.2.0.0, Culture=neutral, PublicKeyToken=fee00910d6e5f53b">
-          <HintPath>..\packages\Remotion.Linq.2.2.0\lib\net45\Remotion.Linq.dll</HintPath>
-          <Private>True</Private>
-        </Reference>
-        <Reference Include="Remotion.Linq.EagerFetching, Version=2.2.0.0, Culture=neutral, PublicKeyToken=fee00910d6e5f53b">
-          <HintPath>..\packages\Remotion.Linq.EagerFetching.2.2.0\lib\net45\Remotion.Linq.EagerFetching.dll</HintPath>
-          <Private>True</Private>
-        </Reference>
         <Reference Include="System" />
-        <Reference Include="System.Configuration" />
         <Reference Include="System.Core" />
         <Reference Include="System.Data" />
-        <Reference Include="System.ServiceModel" />
-        <Reference Include="System.Transactions" />
         <Reference Include="System.Xml" />
     </ItemGroup>
     <ItemGroup>
-        <Compile Include="Authors\AuthorDao.cs" />
-        <Compile Include="Authors\IAuthorDao.cs" />
-        <Compile Include="Books\BookDao.cs" />
-        <Compile Include="Books\Filters\BookFilterDto.cs" />
-        <Compile Include="Books\IBookDao.cs" />
-        <Compile Include="Borrows\BorrowDao.cs" />
-        <Compile Include="Borrows\IBorrowDao.cs" />
-        <Compile Include="Dao.cs" />
-        <Compile Include="IDao.cs" />
-        <Compile Include="Partners\BorrowDao.cs" />
-        <Compile Include="Partners\IPartnerDao.cs" />
+        <Compile Include="BorrowService.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
     </ItemGroup>
     <ItemGroup>
-      <None Include="packages.config" />
-    </ItemGroup>
-    <ItemGroup>
+      <ProjectReference Include="..\Biblioseca.DataAccess\Biblioseca.DataAccess.csproj">
+        <Project>{8d5f9a06-5683-4bd4-b901-909bada80b8c}</Project>
+        <Name>Biblioseca.DataAccess</Name>
+      </ProjectReference>
       <ProjectReference Include="..\Biblioseca.Model\Biblioseca.Model.csproj">
         <Project>{38f28d76-cfe5-43c2-b4b3-77f6344c994d}</Project>
         <Name>Biblioseca.Model</Name>
