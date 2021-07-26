@@ -72,6 +72,7 @@
     <EmbeddedResource Include="Mapping\author.hbm.xml" />
     <EmbeddedResource Include="Mapping\borrows.hbm.xml" />
     <EmbeddedResource Include="Mapping\partner.hbm.xml" />
+    <None Include="Diagram.cd" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
