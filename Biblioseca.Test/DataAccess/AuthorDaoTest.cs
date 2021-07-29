@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Biblioseca.DataAccess.Authors;
+using Biblioseca.DataAccess.Books;
 using Biblioseca.Model;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NHibernate;
@@ -38,7 +39,7 @@ namespace Biblioseca.Test.DataAccess
             AuthorDao authorDao = new AuthorDao(this.sessionFactory);
 
             IEnumerable<Author> authors = authorDao.GetAll();
-
+            
             Assert.IsTrue(authors.Any());
         }
 
@@ -47,13 +48,15 @@ namespace Biblioseca.Test.DataAccess
         {
             AuthorDao authorDao = new AuthorDao(this.sessionFactory);
 
-            IDictionary<string, object> parameters = new Dictionary<string, object> {{"FirstName", "Steve"}};
-            Author author = authorDao.GetUniqueByQuery("FROM Author WHERE FirstName= :FirstName", parameters);
+            IDictionary<string, object> parameters = new Dictionary<string, object>();
+            parameters.Add("FirstName", "%Steve%");
+            
+            Author author = authorDao.GetUniqueByHqlQuery("FROM Author WHERE FirstName LIKE :FirstName", parameters);
 
             Assert.IsNotNull(author);
             Assert.AreEqual("Steve", author.FirstName);
         }
-        
+
         [TestMethod]
         public void GetByQuery()
         {

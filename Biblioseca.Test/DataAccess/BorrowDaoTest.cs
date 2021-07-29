@@ -43,7 +43,7 @@ namespace Biblioseca.Test.DataAccess
         }
 
         [TestMethod]
-        public void GetByBoook()
+        public void GetByBook()
         {
             BorrowDao borrowDao = new BorrowDao(this.sessionFactory);
 

@@ -90,6 +90,8 @@ namespace Biblioseca.Test.Mapping
             Borrow created = this.session.Get<Borrow>(borrow.Id);
 
             Assert.AreEqual(borrow.Id, created.Id);
+            Assert.AreEqual(borrow.Partner.Id, partner.Id);
+            Assert.AreEqual(borrow.Book.Id, book.Id);
         }
     }
 }

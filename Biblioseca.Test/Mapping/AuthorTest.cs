@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using Biblioseca.Model;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NHibernate;
@@ -136,7 +137,7 @@ namespace Biblioseca.Test.Mapping
 
             Assert.IsNotNull(createdPartner);
             Assert.IsNotNull(createdPartner.Borrows);
-            Assert.AreEqual(2, createdPartner.Borrows.Count);
+            Assert.AreEqual(2, createdPartner.Borrows.Count());
         }
     }
 }

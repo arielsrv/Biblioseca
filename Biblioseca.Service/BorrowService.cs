@@ -5,6 +5,7 @@ using Biblioseca.DataAccess.Books;
 using Biblioseca.DataAccess.Borrows;
 using Biblioseca.DataAccess.Partners;
 using Biblioseca.Model;
+using Biblioseca.Model.Exceptions;
 
 namespace Biblioseca.Service
 {
@@ -24,30 +25,14 @@ namespace Biblioseca.Service
         public Borrow BorrowABook(int bookId, int partnerId)
         {
             Book book = bookDao.Get(bookId);
-
-            if (book == null)
-            {
-                throw new ApplicationException("Libro no existe. ");
-            }
+            Ensure.NotNull(book, "Libro no existe. ");
 
             Partner partner = partnerDao.Get(partnerId);
-
-            if (partner == null)
-            {
-                throw new ApplicationException("Socio no existe. ");
-            }
-
-            if (partner.Borrows.Count == 2)
-            {
-                throw new ApplicationException("No puede pedir prestado libros. ");
-            }
+            Ensure.NotNull(partner, "Socio no existe. ");
+            Ensure.IsTrue(partner.Borrows.Count < 2, "No puede pedir prestado más libros. ");
 
             IEnumerable<Borrow> borrows = borrowDao.GetBorrowsByBookId(bookId);
-
-            if (borrows.Any())
-            {
-                throw new ApplicationException("Libro prestado. ");
-            }
+            Ensure.IsTrue(!borrows.Any(), "El libro ya fue prestado. ");
 
             Borrow borrow = new Borrow
             {

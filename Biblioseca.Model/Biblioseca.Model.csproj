@@ -65,6 +65,8 @@
     <Compile Include="Borrow.cs" />
     <Compile Include="Category.cs" />
     <Compile Include="Entity.cs" />
+    <Compile Include="Exceptions\Ensure.cs" />
+    <Compile Include="Exceptions\BusinessRuleException.cs" />
     <Compile Include="Partner.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

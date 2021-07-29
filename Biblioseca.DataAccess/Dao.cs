@@ -42,7 +42,7 @@ namespace Biblioseca.DataAccess
                 .Query<T>();
         }
 
-        public T GetUniqueByQuery(string queryString, IDictionary<string, object> parameters)
+        public T GetUniqueByHqlQuery(string queryString, IDictionary<string, object> parameters)
         {
             IQuery query = this.Session
                 .CreateQuery(queryString);

@@ -15,13 +15,7 @@ namespace Biblioseca.ConsoleApp
 
             ISession session = sessionFactory.OpenSession();
             session.Close();
-
-            List<int> values1 = new List<int>();
-            values1.Add(1);
-
-            List<string> values2 = new List<string>();
-            values2.Add("hello world!");
-
+            
             Console.ReadKey();
         }
     }

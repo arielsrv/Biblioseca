@@ -21,7 +21,7 @@ namespace Biblioseca.DataAccess.Books
             {
                 criteria.Add(Restrictions.Like("Title", bookFilterDto.Title, MatchMode.Anywhere));
             }
-
+            
             if (!string.IsNullOrEmpty(bookFilterDto.AuthorFirstName))
             {
                 criteria.CreateCriteria("Author")

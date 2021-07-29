@@ -71,7 +71,7 @@
         <Compile Include="Borrows\IBorrowDao.cs" />
         <Compile Include="Dao.cs" />
         <Compile Include="IDao.cs" />
-        <Compile Include="Partners\BorrowDao.cs" />
+        <Compile Include="Partners\PartnerDao.cs" />
         <Compile Include="Partners\IPartnerDao.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
     </ItemGroup>

@@ -1,8 +1,10 @@
+using System;
 using System.Collections.Generic;
 using Biblioseca.DataAccess.Books;
 using Biblioseca.DataAccess.Borrows;
 using Biblioseca.DataAccess.Partners;
 using Biblioseca.Model;
+using Biblioseca.Model.Exceptions;
 using Biblioseca.Service;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
@@ -49,7 +51,58 @@ namespace Biblioseca.Test.Services
             Assert.IsNotNull(borrow);
         }
 
-        private Partner GetPartner()
+        [TestMethod]
+        public void BorrowABookWhenBookDoesNotExist()
+        {
+            const int bookId = 1;
+            const int partnerId = 1;
+
+            this.bookDao.Setup(dao => dao.Get(bookId)).Returns(default(Book));
+            this.borrowService = new BorrowService(this.borrowDao.Object, this.bookDao.Object, this.partnerDao.Object);
+            Assert.ThrowsException<BusinessRuleException>(() => this.borrowService.BorrowABook(bookId, partnerId),
+                "Libro no existe. ");
+        }
+
+
+        [TestMethod]
+        public void BorrowABookWhenPartnerDoesNotExist()
+        {
+            const int bookId = 1;
+            const int partnerId = 1;
+
+            this.bookDao.Setup(dao => dao.Get(bookId)).Returns(default(Book));
+            this.partnerDao.Setup(dao => dao.Get(partnerId)).Returns(default(Partner));
+            this.borrowService = new BorrowService(this.borrowDao.Object, this.bookDao.Object, this.partnerDao.Object);
+            Assert.ThrowsException<BusinessRuleException>(() => this.borrowService.BorrowABook(bookId, partnerId),
+                "Socio no existe. ");
+        }
+
+        [TestMethod]
+        public void BorrowABookWhenBooksWasBorrowed()
+        {
+            const int bookId = 1;
+            const int partnerId = 1;
+
+            this.bookDao.Setup(dao => dao.Get(bookId)).Returns(GetBook());
+            this.partnerDao.Setup(dao => dao.Get(partnerId)).Returns(GetPartner());
+            this.borrowDao.Setup(dao => dao.GetBorrowsByBookId(bookId)).Returns(GetBorrows());
+            this.session.Setup(x => x.Save(It.IsAny<object>()));
+            this.borrowDao.Setup(dao => dao.Session).Returns(this.session.Object);
+
+            this.borrowService = new BorrowService(this.borrowDao.Object, this.bookDao.Object, this.partnerDao.Object);
+
+            Assert.ThrowsException<BusinessRuleException>(() => this.borrowService.BorrowABook(bookId, partnerId),
+                "El libro ya fue prestado. ");
+        }
+
+        private static IEnumerable<Borrow> GetBorrows()
+        {
+            List<Borrow> borrows = new List<Borrow> {new Borrow {Id = 1}};
+
+            return borrows;
+        }
+
+        private static Partner GetPartner()
         {
             Partner partner = new Partner()
             {
@@ -61,7 +114,7 @@ namespace Biblioseca.Test.Services
             return partner;
         }
 
-        private Book GetBook()
+        private static Book GetBook()
         {
             Book book = new Book
             {
