@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using Biblioseca.DataAccess.Authors;
+using Biblioseca.Model;
 using NHibernate;
 using NHibernate.Cfg;
+using NHibernate.Context;
 
 namespace Biblioseca.ConsoleApp
 {
-    public class Program
+    public static class Program
     {
         private static void Main()
         {
@@ -14,9 +17,16 @@ namespace Biblioseca.ConsoleApp
                 .BuildSessionFactory();
 
             ISession session = sessionFactory.OpenSession();
-            session.Close();
-            
-            Console.ReadKey();
+            CurrentSessionContext.Bind(session);
+
+            AuthorDao authorDao = new AuthorDao(sessionFactory);
+
+            IEnumerable<Author> authors = authorDao.GetAll();
+
+            foreach (Author author in authors)
+            {
+                Console.WriteLine($"Author: {author.FirstName}, {author.LastName}");
+            }
         }
     }
 }
