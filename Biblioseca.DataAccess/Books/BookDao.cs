@@ -10,7 +10,7 @@ namespace Biblioseca.DataAccess.Books
     {
         public BookDao(ISessionFactory sessionFactory) : base(sessionFactory)
         {
-        }
+        }   
 
         public IEnumerable<Book> GetByFilter(BookFilterDto bookFilterDto)
         {

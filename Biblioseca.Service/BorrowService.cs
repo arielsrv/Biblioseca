@@ -26,13 +26,13 @@ namespace Biblioseca.Service
         {
             Book book = bookDao.Get(bookId);
             Ensure.NotNull(book, "Libro no existe. ");
-
+            Ensure.IsTrue(book.Stock > 0, "No hay stock disponible. ");
+            
             Partner partner = partnerDao.Get(partnerId);
             Ensure.NotNull(partner, "Socio no existe. ");
-            Ensure.IsTrue(partner.Borrows.Count < 2, "No puede pedir prestado más libros. ");
-
-            IEnumerable<Borrow> borrows = borrowDao.GetBorrowsByBookId(bookId);
-            Ensure.IsTrue(!borrows.Any(), "El libro ya fue prestado. ");
+            
+            IEnumerable<Borrow> borrows = borrowDao.GetBorrows(partnerId);
+            Ensure.IsTrue(borrows.Count() < 2, "El socio no puede pedir más prestamos. ");
 
             Borrow borrow = new Borrow
             {

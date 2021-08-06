@@ -40,7 +40,7 @@ namespace Biblioseca.Test.Services
 
             this.bookDao.Setup(dao => dao.Get(bookId)).Returns(GetBook());
             this.partnerDao.Setup(dao => dao.Get(partnerId)).Returns(GetPartner());
-            this.borrowDao.Setup(dao => dao.GetBorrowsByBookId(bookId)).Returns(new List<Borrow>());
+            this.borrowDao.Setup(dao => dao.GetBorrows(bookId)).Returns(new List<Borrow>());
             this.session.Setup(x => x.Save(It.IsAny<object>()));
             this.borrowDao.Setup(dao => dao.Session).Returns(this.session.Object);
 
@@ -85,19 +85,34 @@ namespace Biblioseca.Test.Services
 
             this.bookDao.Setup(dao => dao.Get(bookId)).Returns(GetBook());
             this.partnerDao.Setup(dao => dao.Get(partnerId)).Returns(GetPartner());
-            this.borrowDao.Setup(dao => dao.GetBorrowsByBookId(bookId)).Returns(GetBorrows());
+            this.borrowDao.Setup(dao => dao.GetBorrows(bookId)).Returns(GetBorrows());
             this.session.Setup(x => x.Save(It.IsAny<object>()));
             this.borrowDao.Setup(dao => dao.Session).Returns(this.session.Object);
 
             this.borrowService = new BorrowService(this.borrowDao.Object, this.bookDao.Object, this.partnerDao.Object);
 
             Assert.ThrowsException<BusinessRuleException>(() => this.borrowService.BorrowABook(bookId, partnerId),
-                "El libro ya fue prestado. ");
+                "El socio no puede pedir más prestamos. El socio no puede pedir más prestamos. ");
         }
 
         private static IEnumerable<Borrow> GetBorrows()
         {
-            List<Borrow> borrows = new List<Borrow> {new Borrow {Id = 1}};
+            List<Borrow> borrows = new List<Borrow>
+            {
+                new Borrow
+                {
+                    Id = 1,
+                    ReturnedAt = DateTime.Now
+                },
+                new Borrow
+                {
+                    Id = 2
+                },
+                new Borrow
+                {
+                    Id = 3
+                }
+            };
 
             return borrows;
         }
@@ -120,7 +135,8 @@ namespace Biblioseca.Test.Services
             {
                 Title = "A title",
                 Description = "A description",
-                Price = 1.0
+                Price = 1.0,
+                Stock = 10
             };
 
             return book;

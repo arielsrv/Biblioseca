@@ -15,9 +15,22 @@ namespace Biblioseca.DataAccess.Borrows
         {
             ICriteria criteria = this.Session
                 .CreateCriteria<Borrow>();
-            
+
             criteria.CreateCriteria("Book")
                 .Add(Restrictions.Eq("Id", bookId));
+
+            return criteria.List<Borrow>();
+        }
+
+        public virtual IEnumerable<Borrow> GetBorrows(int partnerId)
+        {
+            ICriteria criteria = this.Session
+                .CreateCriteria<Borrow>();
+            
+            criteria.CreateCriteria("Partner")
+                .Add(Restrictions.Eq("Id", partnerId));
+
+            criteria.Add(Restrictions.Eq("ReturnedAt", null));
             
             return criteria.List<Borrow>();
         }

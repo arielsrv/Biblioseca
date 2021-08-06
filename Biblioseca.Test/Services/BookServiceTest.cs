@@ -13,7 +13,6 @@ namespace Biblioseca.Test.Services
     public class BookServiceTest
     {
         private Mock<BookDao> bookDao;
-        private Mock<BorrowDao> borrowDao;
         private Mock<ISessionFactory> sessionFactory;
         private Mock<ISession> session;
         
@@ -23,17 +22,15 @@ namespace Biblioseca.Test.Services
             this.sessionFactory = new Mock<ISessionFactory>();
             this.session = new Mock<ISession>();
             this.bookDao = new Mock<BookDao>(this.sessionFactory.Object);
-            this.borrowDao = new Mock<BorrowDao>(this.sessionFactory.Object);
         }
 
         [TestMethod]
         public void IsAvailable()
         {
             const int bookId = 1;
-            this.bookDao.Setup(dao => dao.Get(bookId)).Returns(GetBook());
-            this.borrowDao.Setup(dao => dao.GetBorrowsByBookId(bookId)).Returns(default(List<Borrow>));
+            this.bookDao.Setup(dao => dao.Get(bookId)).Returns(GetBook(1));
 
-            BookService bookService = new BookService(this.bookDao.Object, this.borrowDao.Object);
+            BookService bookService = new BookService(this.bookDao.Object);
 
             bool isAvailable = bookService.IsAvailable(bookId);
             Assert.IsTrue(isAvailable);
@@ -43,29 +40,22 @@ namespace Biblioseca.Test.Services
         public void IsNotAvailable()
         {
             const int bookId = 1;
-            this.bookDao.Setup(dao => dao.Get(1)).Returns(GetBook());
-            this.borrowDao.Setup(dao => dao.GetBorrowsByBookId(bookId)).Returns(GetBorrows());
+            this.bookDao.Setup(dao => dao.Get(1)).Returns(GetBook(0));
 
-            BookService bookService = new BookService(this.bookDao.Object, this.borrowDao.Object);
+            BookService bookService = new BookService(this.bookDao.Object);
             
             bool isAvailable = bookService.IsAvailable(bookId);
             Assert.IsFalse(isAvailable);
         }
-
-        private static IEnumerable<Borrow> GetBorrows()
-        {
-            List<Borrow> borrows = new List<Borrow> {new Borrow {Id = 1}};
-
-            return borrows;
-        }
-
-        private static Book GetBook()
+        
+        private static Book GetBook(int stock)
         {
             Book book = new Book
             {
                 Title = "A title",
                 Description = "A description",
-                Price = 1.0
+                Price = 1.0,
+                Stock = stock
             };
 
             return book;

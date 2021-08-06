@@ -10,12 +10,9 @@ namespace Biblioseca.Service
     public class BookService
     {
         private readonly BookDao bookDao;
-        private readonly BorrowDao borrowDao;
-
-        public BookService(BookDao bookDao, BorrowDao borrowDao)
+        public BookService(BookDao bookDao)
         {
             this.bookDao = bookDao;
-            this.borrowDao = borrowDao;
         }
 
         public bool IsAvailable(int bookId)
@@ -25,9 +22,7 @@ namespace Biblioseca.Service
             Book book = this.bookDao.Get(bookId);
             Ensure.NotNull(book, "Libro no existe. ");
 
-            IEnumerable<Borrow> borrows = this.borrowDao.GetBorrowsByBookId(bookId);
-
-            return borrows == null || !borrows.Any();
+            return book.Stock > 0;
         }
     }
 }

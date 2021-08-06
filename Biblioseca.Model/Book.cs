@@ -8,5 +8,7 @@
         public virtual double Price { get; set; }
         public virtual Author Author { get; set; }
         public virtual Category Category { get; set; }
+        
+        public virtual int Stock { get; set; }
     }
 }

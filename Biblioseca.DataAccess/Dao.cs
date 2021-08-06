@@ -55,6 +55,7 @@ namespace Biblioseca.DataAccess
             return query.UniqueResult<T>();
         }
 
+
         public T GetUniqueByQuery(IDictionary<string, object> parameters)
         {
             ICriteria criteria = this.Session
