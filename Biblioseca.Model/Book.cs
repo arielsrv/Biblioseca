@@ -8,7 +8,16 @@
         public virtual double Price { get; set; }
         public virtual Author Author { get; set; }
         public virtual Category Category { get; set; }
-        
         public virtual int Stock { get; set; }
+
+        public virtual void DecreaseStock()
+        {
+            Stock -= 1;
+        }
+
+        public virtual void IncreaseStock()
+        {
+            Stock += 1;
+        }
     }
 }

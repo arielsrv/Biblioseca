@@ -20,8 +20,8 @@ namespace Biblioseca.DataAccess
 
         public void Save(T entity)
         {
-            Session
-                .Save(entity);
+            this.Session
+                .SaveOrUpdate(entity);
         }
 
         public void Delete(T entity)

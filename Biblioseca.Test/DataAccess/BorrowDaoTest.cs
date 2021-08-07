@@ -53,13 +53,23 @@ namespace Biblioseca.Test.DataAccess
         }
 
         [TestMethod]
+        public void GetAllByBookAndPartner()
+        {
+            BorrowDao borrowDao = new BorrowDao(this.sessionFactory);
+
+            IEnumerable<Borrow> borrows = borrowDao.GetBorrows(1, 1);
+
+            Assert.IsTrue(borrows.Any());
+        }
+        
+        [TestMethod]
         public void GetByBookAndPartner()
         {
             BorrowDao borrowDao = new BorrowDao(this.sessionFactory);
 
-            IEnumerable<Borrow> borrows = borrowDao.GetBorrows(1);
+            Borrow borrow = borrowDao.GetBorrow(199, 139);
 
-            Assert.IsTrue(borrows.Any());
+            Assert.IsNotNull(borrow);
         }
     }
 }

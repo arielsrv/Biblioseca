@@ -24,26 +24,47 @@ namespace Biblioseca.Service
 
         public Borrow BorrowABook(int bookId, int partnerId)
         {
+            Ensure.IsTrue(bookId > 0, "Book.Id debe ser mayor que 0. ");
             Book book = bookDao.Get(bookId);
             Ensure.NotNull(book, "Libro no existe. ");
             Ensure.IsTrue(book.Stock > 0, "No hay stock disponible. ");
-            
+
+            Ensure.IsTrue(partnerId > 0, "Partner.Id debe ser mayor que 0. ");
             Partner partner = partnerDao.Get(partnerId);
             Ensure.NotNull(partner, "Socio no existe. ");
-            
-            IEnumerable<Borrow> borrows = borrowDao.GetBorrows(partnerId);
+
+            IEnumerable<Borrow> borrows = borrowDao.GetBorrows(bookId, partnerId);
             Ensure.IsTrue(borrows.Count() < 2, "El socio no puede pedir más prestamos. ");
 
-            Borrow borrow = new Borrow
-            {
-                Book = book,
-                Partner = partner,
-                BorrowedAt = DateTime.Now
-            };
+            Borrow borrow = Borrow
+                .Create(book, partner);
+
+            book.DecreaseStock();
 
             borrowDao.Save(borrow);
 
             return borrow;
+        }
+
+        public bool Returns(int bookId, int partnerId)
+        {
+            Ensure.IsTrue(bookId > 0, "Book.Id debe ser mayor que 0. ");
+            Book book = bookDao.Get(bookId);
+            Ensure.NotNull(book, "Libro no existe. ");
+
+            Ensure.IsTrue(partnerId > 0, "Partner.Id debe ser mayor que 0. ");
+            Partner partner = partnerDao.Get(partnerId);
+            Ensure.NotNull(partner, "Socio no existe. ");
+
+            Borrow borrow = borrowDao.GetBorrow(bookId, partnerId);
+            Ensure.NotNull(borrow, "No existe prestamo del libro para el socio. ");
+
+            borrow.Returned();
+            book.IncreaseStock();
+
+            borrowDao.Save(borrow);
+
+            return true;
         }
     }
 }

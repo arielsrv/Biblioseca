@@ -40,7 +40,7 @@ namespace Biblioseca.Test.Services
 
             this.bookDao.Setup(dao => dao.Get(bookId)).Returns(GetBook());
             this.partnerDao.Setup(dao => dao.Get(partnerId)).Returns(GetPartner());
-            this.borrowDao.Setup(dao => dao.GetBorrows(bookId)).Returns(new List<Borrow>());
+            this.borrowDao.Setup(dao => dao.GetBorrows(bookId, partnerId)).Returns(new List<Borrow>());
             this.session.Setup(x => x.Save(It.IsAny<object>()));
             this.borrowDao.Setup(dao => dao.Session).Returns(this.session.Object);
 
@@ -85,7 +85,7 @@ namespace Biblioseca.Test.Services
 
             this.bookDao.Setup(dao => dao.Get(bookId)).Returns(GetBook());
             this.partnerDao.Setup(dao => dao.Get(partnerId)).Returns(GetPartner());
-            this.borrowDao.Setup(dao => dao.GetBorrows(bookId)).Returns(GetBorrows());
+            this.borrowDao.Setup(dao => dao.GetBorrows(bookId, partnerId)).Returns(GetBorrows());
             this.session.Setup(x => x.Save(It.IsAny<object>()));
             this.borrowDao.Setup(dao => dao.Session).Returns(this.session.Object);
 
@@ -93,6 +93,39 @@ namespace Biblioseca.Test.Services
 
             Assert.ThrowsException<BusinessRuleException>(() => this.borrowService.BorrowABook(bookId, partnerId),
                 "El socio no puede pedir más prestamos. El socio no puede pedir más prestamos. ");
+        }
+
+        [TestMethod]
+        public void ReturnsABook()
+        {
+            const int bookId = 1;
+            const int partnerId = 1;
+
+            this.bookDao.Setup(dao => dao.Get(bookId)).Returns(GetBook());
+            this.partnerDao.Setup(dao => dao.Get(partnerId)).Returns(GetPartner());
+            this.borrowDao.Setup(dao => dao.GetBorrow(bookId, partnerId)).Returns(GetBorrow());
+            this.session.Setup(x => x.Save(It.IsAny<object>()));
+            this.borrowDao.Setup(dao => dao.Session).Returns(this.session.Object);
+
+            this.borrowService = new BorrowService(this.borrowDao.Object, this.bookDao.Object, this.partnerDao.Object);
+
+            bool returned = this.borrowService.Returns(bookId, partnerId);
+
+            Assert.IsTrue(returned);
+        }
+
+        private static Borrow GetBorrow()
+        {
+            return new Borrow
+            {
+                Id = 1,
+                ReturnedAt = DateTime.Now,
+                Book = new Book
+                {
+                    Id = 1,
+                    Stock = 1
+                }
+            };
         }
 
         private static IEnumerable<Borrow> GetBorrows()

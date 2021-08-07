@@ -22,6 +22,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "scripts", "scripts", "{6178
 ProjectSection(SolutionItems) = preProject
 	scripts\db.sql = scripts\db.sql
 	scripts\001.sql = scripts\001.sql
+	scripts\002.sql = scripts\002.sql
 EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Biblioseca.Service", "Biblioseca.Service\Biblioseca.Service.csproj", "{82A4DE05-7D9E-4FD5-9B9F-0B9815E4301F}"

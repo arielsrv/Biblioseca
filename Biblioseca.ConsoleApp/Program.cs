@@ -1,7 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using Biblioseca.DataAccess.Authors;
+using Biblioseca.DataAccess.Books;
+using Biblioseca.DataAccess.Borrows;
+using Biblioseca.DataAccess.Partners;
 using Biblioseca.Model;
+using Biblioseca.Service;
 using NHibernate;
 using NHibernate.Cfg;
 using NHibernate.Context;
@@ -19,14 +23,15 @@ namespace Biblioseca.ConsoleApp
             ISession session = sessionFactory.OpenSession();
             CurrentSessionContext.Bind(session);
 
-            AuthorDao authorDao = new AuthorDao(sessionFactory);
+            BorrowDao borrowDao = new BorrowDao(sessionFactory);
+            BookDao bookDao = new BookDao(sessionFactory);
+            PartnerDao partnerDao = new PartnerDao(sessionFactory);
 
-            IEnumerable<Author> authors = authorDao.GetAll();
-
-            foreach (Author author in authors)
-            {
-                Console.WriteLine($"Author: {author.FirstName}, {author.LastName}");
-            }
+            BorrowService borrowService = new BorrowService(borrowDao, bookDao, partnerDao);
+                    
+            borrowService.BorrowABook(527, 1);
+            
+            // session.Flush();
         }
     }
 }
