@@ -1,6 +1,6 @@
-using System.Collections.Generic;
 using NHibernate;
 using NHibernate.Criterion;
+using System.Collections.Generic;
 
 namespace Biblioseca.DataAccess
 {
@@ -54,7 +54,6 @@ namespace Biblioseca.DataAccess
 
             return query.UniqueResult<T>();
         }
-
 
         public T GetUniqueByQuery(IDictionary<string, object> parameters)
         {

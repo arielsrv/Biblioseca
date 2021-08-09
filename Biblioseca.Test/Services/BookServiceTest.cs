@@ -1,6 +1,4 @@
-using System.Collections.Generic;
 using Biblioseca.DataAccess.Books;
-using Biblioseca.DataAccess.Borrows;
 using Biblioseca.Model;
 using Biblioseca.Service;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -15,7 +13,7 @@ namespace Biblioseca.Test.Services
         private Mock<BookDao> bookDao;
         private Mock<ISessionFactory> sessionFactory;
         private Mock<ISession> session;
-        
+
         [TestInitialize]
         public void SetUp()
         {
@@ -35,7 +33,7 @@ namespace Biblioseca.Test.Services
             bool isAvailable = bookService.IsAvailable(bookId);
             Assert.IsTrue(isAvailable);
         }
-        
+
         [TestMethod]
         public void IsNotAvailable()
         {
@@ -43,11 +41,11 @@ namespace Biblioseca.Test.Services
             this.bookDao.Setup(dao => dao.Get(1)).Returns(GetBook(0));
 
             BookService bookService = new BookService(this.bookDao.Object);
-            
+
             bool isAvailable = bookService.IsAvailable(bookId);
             Assert.IsFalse(isAvailable);
         }
-        
+
         private static Book GetBook(int stock)
         {
             Book book = new Book

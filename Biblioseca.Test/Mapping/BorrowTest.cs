@@ -1,8 +1,8 @@
-using System;
 using Biblioseca.Model;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NHibernate;
 using NHibernate.Cfg;
+using System;
 
 namespace Biblioseca.Test.Mapping
 {
@@ -45,7 +45,7 @@ namespace Biblioseca.Test.Mapping
             {
                 Name = "Adventure"
             };
-            
+
             this.session.Save(category);
             this.session.Flush();
             this.session.Clear();
@@ -59,7 +59,7 @@ namespace Biblioseca.Test.Mapping
                 Title = "A title",
                 ISBN = "123-456-7890"
             };
-            
+
             this.session.Save(book);
             this.session.Flush();
             this.session.Clear();
@@ -70,7 +70,7 @@ namespace Biblioseca.Test.Mapping
                 FirstName = "Elon",
                 LastName = "Musk"
             };
-            
+
             this.session.Save(partner);
             this.session.Flush();
             this.session.Clear();
@@ -82,9 +82,9 @@ namespace Biblioseca.Test.Mapping
                 BorrowedAt = DateTime.Now,
                 ReturnedAt = DateTime.Now.AddDays(2)
             };
-            
+
             this.session.Save(borrow);
-            
+
             Assert.IsTrue(author.Id > 0);
 
             Borrow created = this.session.Get<Borrow>(borrow.Id);

@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-using System.Linq;
 using Biblioseca.DataAccess.Books;
 using Biblioseca.DataAccess.Books.Filters;
 using Biblioseca.Model;
@@ -7,6 +5,8 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NHibernate;
 using NHibernate.Cfg;
 using NHibernate.Context;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Biblioseca.Test.DataAccess
 {

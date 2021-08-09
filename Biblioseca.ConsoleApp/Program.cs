@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using Biblioseca.DataAccess.Authors;
-using Biblioseca.DataAccess.Books;
+﻿using Biblioseca.DataAccess.Books;
 using Biblioseca.DataAccess.Borrows;
 using Biblioseca.DataAccess.Partners;
-using Biblioseca.Model;
 using Biblioseca.Service;
 using NHibernate;
 using NHibernate.Cfg;
@@ -28,10 +24,8 @@ namespace Biblioseca.ConsoleApp
             PartnerDao partnerDao = new PartnerDao(sessionFactory);
 
             BorrowService borrowService = new BorrowService(borrowDao, bookDao, partnerDao);
-                    
-            borrowService.BorrowABook(527, 1);
-            
-            // session.Flush();
+
+            borrowService.BorrowABook(527, 1);            
         }
     }
 }

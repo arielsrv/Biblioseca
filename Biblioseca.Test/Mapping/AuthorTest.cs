@@ -1,9 +1,9 @@
-﻿using System;
-using System.Linq;
-using Biblioseca.Model;
+﻿using Biblioseca.Model;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NHibernate;
 using NHibernate.Cfg;
+using System;
+using System.Linq;
 
 namespace Biblioseca.Test.Mapping
 {
@@ -66,7 +66,7 @@ namespace Biblioseca.Test.Mapping
             {
                 Name = "Adventure"
             };
-            
+
             this.session.Save(category);
             this.session.Flush();
             this.session.Clear();
@@ -80,7 +80,7 @@ namespace Biblioseca.Test.Mapping
                 Title = "A title",
                 ISBN = "123-456-7890"
             };
-            
+
             this.session.Save(book1);
             this.session.Flush();
             this.session.Clear();
@@ -94,7 +94,7 @@ namespace Biblioseca.Test.Mapping
                 Title = "A title",
                 ISBN = "123-456-7890"
             };
-            
+
             this.session.Save(book2);
             this.session.Flush();
             this.session.Clear();
@@ -105,7 +105,7 @@ namespace Biblioseca.Test.Mapping
                 FirstName = "Elon",
                 LastName = "Musk"
             };
-            
+
             this.session.Save(partner);
             this.session.Flush();
             this.session.Clear();
@@ -117,7 +117,7 @@ namespace Biblioseca.Test.Mapping
                 BorrowedAt = DateTime.Now,
                 ReturnedAt = DateTime.Now.AddDays(2)
             };
-            
+
             Borrow borrow2 = new Borrow
             {
                 Book = book2,
@@ -125,14 +125,14 @@ namespace Biblioseca.Test.Mapping
                 BorrowedAt = DateTime.Now,
                 ReturnedAt = DateTime.Now.AddDays(2)
             };
-            
+
             partner.Borrows.Add(borrow1);
             partner.Borrows.Add(borrow2);
 
             this.session.SaveOrUpdate(partner);
             this.session.Flush();
             this.session.Clear();
-            
+
             Partner createdPartner = this.session.Get<Partner>(partner.Id);
 
             Assert.IsNotNull(createdPartner);

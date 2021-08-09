@@ -1,7 +1,7 @@
-using System.Collections.Generic;
 using Biblioseca.Model;
 using NHibernate;
 using NHibernate.Criterion;
+using System.Collections.Generic;
 
 namespace Biblioseca.DataAccess.Borrows
 {
@@ -26,31 +26,31 @@ namespace Biblioseca.DataAccess.Borrows
         {
             ICriteria criteria = this.Session
                 .CreateCriteria<Borrow>();
-            
+
             criteria.CreateCriteria("Book")
                 .Add(Restrictions.Eq("Id", bookId));
-            
+
             criteria.CreateCriteria("Partner")
                 .Add(Restrictions.Eq("Id", partnerId));
 
             criteria.Add(Restrictions.Eq("ReturnedAt", null));
-            
+
             return criteria.List<Borrow>();
         }
-        
+
         public virtual Borrow GetBorrow(int bookId, int partnerId)
         {
             ICriteria criteria = this.Session
                 .CreateCriteria<Borrow>();
-            
+
             criteria.CreateCriteria("Book")
                 .Add(Restrictions.Eq("Id", bookId));
-            
+
             criteria.CreateCriteria("Partner")
                 .Add(Restrictions.Eq("Id", partnerId));
 
             criteria.Add(Restrictions.Eq("ReturnedAt", null));
-            
+
             return criteria.UniqueResult<Borrow>();
         }
     }

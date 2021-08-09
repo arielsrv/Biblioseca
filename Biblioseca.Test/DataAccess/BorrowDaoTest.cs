@@ -1,11 +1,11 @@
-using System.Collections.Generic;
-using System.Linq;
 using Biblioseca.DataAccess.Borrows;
 using Biblioseca.Model;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NHibernate;
 using NHibernate.Cfg;
 using NHibernate.Context;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Biblioseca.Test.DataAccess
 {
@@ -61,7 +61,7 @@ namespace Biblioseca.Test.DataAccess
 
             Assert.IsTrue(borrows.Any());
         }
-        
+
         [TestMethod]
         public void GetByBookAndPartner()
         {

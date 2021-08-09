@@ -1,7 +1,4 @@
-using System.Collections.Generic;
-using System.Linq;
 using Biblioseca.DataAccess.Books;
-using Biblioseca.DataAccess.Borrows;
 using Biblioseca.Model;
 using Biblioseca.Model.Exceptions;
 
@@ -10,6 +7,7 @@ namespace Biblioseca.Service
     public class BookService
     {
         private readonly BookDao bookDao;
+
         public BookService(BookDao bookDao)
         {
             this.bookDao = bookDao;

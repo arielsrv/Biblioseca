@@ -1,5 +1,3 @@
-using System;
-using System.Collections.Generic;
 using Biblioseca.DataAccess.Books;
 using Biblioseca.DataAccess.Borrows;
 using Biblioseca.DataAccess.Partners;
@@ -9,6 +7,8 @@ using Biblioseca.Service;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using NHibernate;
+using System;
+using System.Collections.Generic;
 
 namespace Biblioseca.Test.Services
 {
@@ -62,7 +62,6 @@ namespace Biblioseca.Test.Services
             Assert.ThrowsException<BusinessRuleException>(() => this.borrowService.BorrowABook(bookId, partnerId),
                 "Libro no existe. ");
         }
-
 
         [TestMethod]
         public void BorrowABookWhenPartnerDoesNotExist()

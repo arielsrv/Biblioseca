@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using Biblioseca.DataAccess.Books;
+﻿using Biblioseca.DataAccess.Books;
 using Biblioseca.DataAccess.Borrows;
 using Biblioseca.DataAccess.Partners;
 using Biblioseca.Model;
 using Biblioseca.Model.Exceptions;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Biblioseca.Service
 {

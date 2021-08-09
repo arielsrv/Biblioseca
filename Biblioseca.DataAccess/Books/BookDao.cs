@@ -1,8 +1,8 @@
-using System.Collections.Generic;
 using Biblioseca.DataAccess.Books.Filters;
 using Biblioseca.Model;
 using NHibernate;
 using NHibernate.Criterion;
+using System.Collections.Generic;
 
 namespace Biblioseca.DataAccess.Books
 {
@@ -10,7 +10,7 @@ namespace Biblioseca.DataAccess.Books
     {
         public BookDao(ISessionFactory sessionFactory) : base(sessionFactory)
         {
-        }   
+        }
 
         public IEnumerable<Book> GetByFilter(BookFilterDto bookFilterDto)
         {
@@ -21,7 +21,7 @@ namespace Biblioseca.DataAccess.Books
             {
                 criteria.Add(Restrictions.Like("Title", bookFilterDto.Title, MatchMode.Anywhere));
             }
-            
+
             if (!string.IsNullOrEmpty(bookFilterDto.AuthorFirstName))
             {
                 criteria.CreateCriteria("Author")

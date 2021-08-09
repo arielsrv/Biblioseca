@@ -4,6 +4,5 @@ namespace Biblioseca.DataAccess.Partners
 {
     public interface IPartnerDao : IDao<Partner>
     {
-        
     }
 }
