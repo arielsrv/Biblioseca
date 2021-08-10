@@ -7,6 +7,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "resources", "resources", "{
 	ProjectSection(SolutionItems) = preProject
 		resources\1.Modelo-de-negocio.md = resources\1.Modelo-de-negocio.md
 		resources\example.config = resources\example.config
+		resources\iis.png = resources\iis.png
 		resources\template.hbm.xml = resources\template.hbm.xml
 	EndProjectSection
 EndProject
