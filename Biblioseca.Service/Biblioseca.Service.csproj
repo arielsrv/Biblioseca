@@ -38,6 +38,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AuthorService.cs" />
     <Compile Include="BookService.cs" />
     <Compile Include="BorrowService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
