@@ -12,9 +12,10 @@ namespace Biblioseca.Web
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            
         }
 
-        protected void ButtonCreateNewAuthor_Click(object sender, EventArgs e)
+        protected void ButtonCreateAuthor_Click(object sender, EventArgs e)
         {
             AuthorService authorService = new AuthorService(authorDao);
 

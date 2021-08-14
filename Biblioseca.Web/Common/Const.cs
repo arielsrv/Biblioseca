@@ -8,6 +8,7 @@
             {
                 public const string List = "~/Authors/List.aspx";
                 public const string Create = "~/Authors/Create.aspx";
+                public const string Edit = "~/Authors/Edit.aspx?id={0}";
             }
         }
     }

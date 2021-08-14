@@ -11,7 +11,7 @@ namespace Biblioseca.Web
 {
 
 
-    public partial class Authors
+    public partial class List
     {
 
         /// <summary>

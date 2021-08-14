@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Create New Author" MasterPageFile="~/Site.Master" Language="C#" AutoEventWireup="true" CodeBehind="Create.aspx.cs" Inherits="Biblioseca.Web.CreateNewAuthor" %>
+﻿<%@ Page Title="Edit author" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Edit.aspx.cs" Inherits="Biblioseca.Web.Authors.Edit" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <div class="form-group">
@@ -12,6 +12,6 @@
             ErrorMessage="El apellido es obligatorio" ControlToValidate="textBoxLastName" ForeColor="Red">
         </asp:RequiredFieldValidator>
         <br />
-        <asp:Button ID="buttonCreateAuthor" runat="server" Text="Crear" OnClick="ButtonCreateAuthor_Click" CssClass="btn btn-primary" />
-    </div>
+        <asp:Button ID="buttonEditAuthor" runat="server" Text="Guardar" OnClick="ButtonEditAuthor_Click" CssClass="btn btn-primary" />
+    </div>    
 </asp:Content>

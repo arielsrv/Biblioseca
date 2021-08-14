@@ -7,11 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Biblioseca.Web
+namespace Biblioseca.Web.Authors
 {
 
 
-    public partial class CreateNewAuthor
+    public partial class Edit
     {
 
         /// <summary>
@@ -51,12 +51,12 @@ namespace Biblioseca.Web
         protected global::System.Web.UI.WebControls.RequiredFieldValidator textBoxLastNameRequiredFieldValidator;
 
         /// <summary>
-        /// buttonCreateAuthor control.
+        /// buttonEditAuthor control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button buttonCreateAuthor;
+        protected global::System.Web.UI.WebControls.Button buttonEditAuthor;
     }
 }

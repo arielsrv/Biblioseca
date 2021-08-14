@@ -1,4 +1,5 @@
 ﻿using Biblioseca.Model.Exceptions;
+using System;
 
 namespace Biblioseca.Model
 {
@@ -19,6 +20,18 @@ namespace Biblioseca.Model
             };
 
             return author;
+        }
+
+        public virtual void SetFirstName(string firstName)
+        {
+            Ensure.NotNull(firstName, "El nombre no puede ser nulo. ");
+            this.FirstName = firstName;
+        }
+
+        public virtual void SetLastName(string lastName)
+        {
+            Ensure.NotNull(lastName, "El apellido no puede ser nulo. ");
+            this.LastName = lastName;
         }
     }
 }
