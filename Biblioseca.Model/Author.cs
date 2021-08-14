@@ -1,8 +1,24 @@
-﻿namespace Biblioseca.Model
+﻿using Biblioseca.Model.Exceptions;
+
+namespace Biblioseca.Model
 {
     public class Author : Entity
     {
         public virtual string FirstName { get; set; }
         public virtual string LastName { get; set; }
+
+        public static Author Create(string firstName, string lastName)
+        {
+            Ensure.NotNull(firstName, "El nombre no puede ser nulo. ");
+            Ensure.NotNull(lastName, "El apellido no puede ser nulo. ");
+
+            Author author = new Author
+            {
+                FirstName = firstName,
+                LastName = lastName
+            };
+
+            return author;
+        }
     }
 }

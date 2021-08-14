@@ -17,5 +17,10 @@ namespace Biblioseca.Service
         {
             return this.authorDao.GetAll();
         }
+
+        public void Create(Author author)
+        {
+            this.authorDao.Save(author);
+        }
     }
 }
