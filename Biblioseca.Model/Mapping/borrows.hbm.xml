@@ -4,10 +4,10 @@
                    namespace="Biblioseca.Model">
     <class name="Borrow" table="Borrows">
         <id name="Id">
-            <generator class="identity"/>
+            <generator class="identity" />
         </id>
         <many-to-one name="Book" class="Book">
-            <column name="BookId" sql-type="int" not-null="true"/>
+            <column name="BookId" sql-type="int" not-null="true" />
         </many-to-one>
         <many-to-one name="Partner" class="Partner">
             <column name="PartnerId" sql-type="int" not-null="false" />
@@ -16,7 +16,7 @@
             <column name="BorrowedAt" sql-type="datetime2" not-null="true" />
         </property>
         <property name="ReturnedAt">
-            <column name="ReturnedAt" sql-type="datetime2"/>
+            <column name="ReturnedAt" sql-type="datetime2" />
         </property>
     </class>
 </hibernate-mapping>

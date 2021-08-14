@@ -10,11 +10,11 @@ namespace Biblioseca.Web.Authors
     public partial class Edit : BasePage
     {
         private readonly AuthorDao authorDao = new AuthorDao(Global.SessionFactory);
-        private int authorId;        
+        private int authorId;
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            this.authorId = Convert.ToInt32(Request.QueryString.Get("id"));            
+            this.authorId = Convert.ToInt32(Request.QueryString.Get("id"));
 
             if (!this.IsPostBack)
             {
@@ -40,7 +40,7 @@ namespace Biblioseca.Web.Authors
 
             author.SetFirstName(this.textBoxFirstName.Text);
             author.SetLastName(this.textBoxLastName.Text);
-            
+
             authorService.Update(author);
 
             Response.Redirect(Const.Pages.Author.List);

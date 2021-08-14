@@ -4,20 +4,20 @@
                    namespace="Biblioseca.Model">
     <class name="Partner" table="Partners">
         <id name="Id">
-            <generator class="identity"/>
+            <generator class="identity" />
         </id>
         <property name="FirstName">
-            <column name="FirstName" length="200" not-null="true"/>
+            <column name="FirstName" length="200" not-null="true" />
         </property>
         <property name="LastName">
-            <column name="LastName" length="200" not-null="true"/>
+            <column name="LastName" length="200" not-null="true" />
         </property>
         <property name="Username">
-            <column name="Username" length="200" not-null="true"/>
+            <column name="Username" length="200" not-null="true" />
         </property>
         <set name="Borrows" lazy="true" inverse="true" cascade="all-delete-orphan">
-            <key column="PartnerId"/>
-            <one-to-many class="Borrow"/>
+            <key column="PartnerId" />
+            <one-to-many class="Borrow" />
         </set>
     </class>
 </hibernate-mapping>

@@ -1,5 +1,4 @@
 ﻿using Biblioseca.Model.Exceptions;
-using System;
 
 namespace Biblioseca.Model
 {

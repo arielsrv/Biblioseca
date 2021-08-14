@@ -8,7 +8,7 @@ namespace Biblioseca.Model
         {
             Borrows = new HashSet<Borrow>();
         }
-        
+
         public virtual string FirstName { get; set; }
         public virtual string LastName { get; set; }
         public virtual string Username { get; set; }

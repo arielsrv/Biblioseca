@@ -13,5 +13,5 @@
         </asp:RequiredFieldValidator>
         <br />
         <asp:Button ID="buttonEditAuthor" runat="server" Text="Guardar" OnClick="ButtonEditAuthor_Click" CssClass="btn btn-primary" />
-    </div>    
+    </div>
 </asp:Content>
