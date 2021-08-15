@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="Authors" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="List.aspx.cs" Inherits="Biblioseca.Web.List" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
+    <h2>Index</h2>
     <asp:GridView ID="GridViewAuthors" runat="server" AutoGenerateColumns="false" DataKeyNames="Id"
         OnRowDeleting="GridViewAuthors_RowDeleting" OnRowEditing="GridViewAuthors_RowEditing" CssClass="table table-bordered table-hover">
         <Columns>

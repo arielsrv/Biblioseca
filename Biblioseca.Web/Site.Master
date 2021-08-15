@@ -51,6 +51,7 @@
                     <ul class="nav navbar-nav">
                         <li><a runat="server" href="~/">Home</a></li>
                         <li><a runat="server" href="~/Authors/List.aspx">Authors</a></li>
+                        <li><a runat="server" href="~/Books/List.aspx">Books</a></li>
                     </ul>
                 </div>
             </div>

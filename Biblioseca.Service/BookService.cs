@@ -1,6 +1,8 @@
 using Biblioseca.DataAccess.Books;
 using Biblioseca.Model;
 using Biblioseca.Model.Exceptions;
+using System;
+using System.Collections.Generic;
 
 namespace Biblioseca.Service
 {
@@ -21,6 +23,11 @@ namespace Biblioseca.Service
             Ensure.NotNull(book, "Libro no existe. ");
 
             return book.Stock > 0;
+        }
+
+        public IEnumerable<Book> GetAll()
+        {
+            return this.bookDao.GetAll();
         }
     }
 }

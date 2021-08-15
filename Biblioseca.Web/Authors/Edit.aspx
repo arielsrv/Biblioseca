@@ -1,7 +1,10 @@
 ﻿<%@ Page Title="Edit author" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Edit.aspx.cs" Inherits="Biblioseca.Web.Authors.Edit" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
-    <div class="form-group">
+    <h2>Edit</h2>
+    <div class="form-horizontal">
+        <h4>Author</h4>
+        <hr />
         <asp:TextBox ID="textBoxFirstName" placeholder="First name" runat="server" CssClass="form-control"></asp:TextBox>
         <asp:RequiredFieldValidator ID="textBoxFirstNameRequiredFieldValidator" runat="server"
             ErrorMessage="El nombre es obligatorio" ControlToValidate="textBoxFirstName" ForeColor="Red">
