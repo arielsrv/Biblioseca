@@ -4,7 +4,7 @@
     <h2>Create</h2>
     <div class="form-horizontal">
         <h4>Author</h4>
-        <hr />        
+        <hr />
         <asp:TextBox ID="textBoxFirstName" placeholder="First name" runat="server" CssClass="form-control"></asp:TextBox>
         <asp:RequiredFieldValidator ID="textBoxFirstNameRequiredFieldValidator" runat="server"
             ErrorMessage="El nombre es obligatorio" ControlToValidate="textBoxFirstName" ForeColor="Red">

@@ -69,6 +69,8 @@
     <Compile Include="Books\IBookDao.cs" />
     <Compile Include="Borrows\BorrowDao.cs" />
     <Compile Include="Borrows\IBorrowDao.cs" />
+    <Compile Include="Categories\CategoryDao.cs" />
+    <Compile Include="Categories\ICategoryDao.cs" />
     <Compile Include="Dao.cs" />
     <Compile Include="IDao.cs" />
     <Compile Include="Partners\PartnerDao.cs" />

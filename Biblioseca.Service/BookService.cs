@@ -1,7 +1,6 @@
 using Biblioseca.DataAccess.Books;
 using Biblioseca.Model;
 using Biblioseca.Model.Exceptions;
-using System;
 using System.Collections.Generic;
 
 namespace Biblioseca.Service
@@ -28,6 +27,11 @@ namespace Biblioseca.Service
         public IEnumerable<Book> GetAll()
         {
             return this.bookDao.GetAll();
+        }
+
+        public void Create(Book book)
+        {
+            this.bookDao.Save(book);
         }
     }
 }

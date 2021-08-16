@@ -15,7 +15,44 @@
         </div>
         <div class="form-group">
             <div class="col-md-10">
+                <asp:TextBox ID="textBoxDescription" placeholder="Description" runat="server" CssClass="form-control"></asp:TextBox>
+                <asp:RequiredFieldValidator ID="textBoxDescriptionRequiredFieldValidator" runat="server"
+                    ErrorMessage="La descripción es obligatoria" ControlToValidate="textBoxDescription" ForeColor="Red">
+                </asp:RequiredFieldValidator>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-10">
+                <asp:TextBox ID="textBoxISBN" placeholder="ISBN" runat="server" CssClass="form-control"></asp:TextBox>
+                <asp:RequiredFieldValidator ID="textBoxISBNRequiredFieldValidator" runat="server"
+                    ErrorMessage="El ISBN es obligatorio" ControlToValidate="textBoxISBN" ForeColor="Red">
+                </asp:RequiredFieldValidator>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-10">
+                <asp:TextBox ID="textBoxPrice" placeholder="Price" runat="server" CssClass="form-control"></asp:TextBox>
+                <asp:CompareValidator ID="textBoxPriceRequiredFieldValidator" Operator="DataTypeCheck" Type="Double" runat="server"
+                    ErrorMessage="El precio es obligatorio" ControlToValidate="textBoxPrice" ForeColor="Red">
+                </asp:CompareValidator>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-10">
                 <asp:DropDownList ID="authorList" runat="server" CssClass="form-control"></asp:DropDownList>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-10">
+                <asp:DropDownList ID="categoryList" runat="server" CssClass="form-control"></asp:DropDownList>
+            </div>
+        </div>        
+        <div class="form-group">
+            <div class="col-md-10">
+                <asp:TextBox ID="textBoxStock" placeholder="Stock" runat="server" CssClass="form-control"></asp:TextBox>
+                <asp:CompareValidator ID="textBoxStockRequiredFieldValidator" Operator="DataTypeCheck" Type="Integer" runat="server"
+                    ErrorMessage="El stock es obligatorio" ControlToValidate="textBoxStock" ForeColor="Red">
+                </asp:CompareValidator>
             </div>
         </div>
         <div class="form-group">

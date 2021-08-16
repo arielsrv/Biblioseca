@@ -33,6 +33,60 @@ namespace Biblioseca.Web.Books
         protected global::System.Web.UI.WebControls.RequiredFieldValidator textBoxFirstNameRequiredFieldValidator;
 
         /// <summary>
+        /// textBoxDescription control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox textBoxDescription;
+
+        /// <summary>
+        /// textBoxDescriptionRequiredFieldValidator control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator textBoxDescriptionRequiredFieldValidator;
+
+        /// <summary>
+        /// textBoxISBN control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox textBoxISBN;
+
+        /// <summary>
+        /// textBoxISBNRequiredFieldValidator control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator textBoxISBNRequiredFieldValidator;
+
+        /// <summary>
+        /// textBoxPrice control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox textBoxPrice;
+
+        /// <summary>
+        /// textBoxPriceRequiredFieldValidator control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CompareValidator textBoxPriceRequiredFieldValidator;
+
+        /// <summary>
         /// authorList control.
         /// </summary>
         /// <remarks>
@@ -40,6 +94,33 @@ namespace Biblioseca.Web.Books
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList authorList;
+
+        /// <summary>
+        /// categoryList control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList categoryList;
+
+        /// <summary>
+        /// textBoxStock control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox textBoxStock;
+
+        /// <summary>
+        /// textBoxStockRequiredFieldValidator control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CompareValidator textBoxStockRequiredFieldValidator;
 
         /// <summary>
         /// buttonCreateBook control.
