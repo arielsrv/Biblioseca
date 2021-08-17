@@ -2,6 +2,7 @@ using Biblioseca.DataAccess.Books;
 using Biblioseca.Model;
 using Biblioseca.Model.Exceptions;
 using System.Collections.Generic;
+using Biblioseca.DataAccess.Books.Filters;
 
 namespace Biblioseca.Service
 {
@@ -29,6 +30,16 @@ namespace Biblioseca.Service
             return this.bookDao.GetAll();
         }
 
+        public IEnumerable<Book> GetAvailableBooks()
+        {
+            BookFilterDto bookFilterDto = new BookFilterDto
+            {
+                Stock = true
+            };
+            
+            return this.bookDao.GetByFilter(bookFilterDto);
+        }
+ 
         public void Create(Book book)
         {
             this.bookDao.Save(book);

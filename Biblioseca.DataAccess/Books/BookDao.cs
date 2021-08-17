@@ -12,7 +12,7 @@ namespace Biblioseca.DataAccess.Books
         {
         }
 
-        public IEnumerable<Book> GetByFilter(BookFilterDto bookFilterDto)
+        public virtual IEnumerable<Book> GetByFilter(BookFilterDto bookFilterDto)
         {
             ICriteria criteria = this.Session
                 .CreateCriteria<Book>();
@@ -20,6 +20,11 @@ namespace Biblioseca.DataAccess.Books
             if (!string.IsNullOrEmpty(bookFilterDto.Title))
             {
                 criteria.Add(Restrictions.Like("Title", bookFilterDto.Title, MatchMode.Anywhere));
+            }
+
+            if (bookFilterDto.Stock)
+            {
+                criteria.Add(Restrictions.Gt("Stock", 0));
             }
 
             if (!string.IsNullOrEmpty(bookFilterDto.AuthorFirstName))

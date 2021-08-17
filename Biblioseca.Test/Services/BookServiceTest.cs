@@ -1,4 +1,7 @@
+using System.Collections.Generic;
+using System.Linq;
 using Biblioseca.DataAccess.Books;
+using Biblioseca.DataAccess.Books.Filters;
 using Biblioseca.Model;
 using Biblioseca.Service;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -44,6 +47,37 @@ namespace Biblioseca.Test.Services
 
             bool isAvailable = bookService.IsAvailable(bookId);
             Assert.IsFalse(isAvailable);
+        }
+
+        [TestMethod]
+        public void GetAvailableBooks()
+        {
+            this.bookDao.Setup(dao => dao.GetByFilter(It.IsAny<BookFilterDto>())).Returns(GetBooks());
+
+            BookService bookService = new BookService(this.bookDao.Object);
+
+            IEnumerable<Book> books = bookService.GetAvailableBooks();
+            
+            Assert.IsTrue(books.Any());
+        }
+
+        private static IEnumerable<Book> GetBooks()
+        {
+            List<Book> books = new List<Book>
+            {
+                new Book
+                {
+                    Title = "A title",
+                    Stock = 0
+                },
+                new Book
+                {
+                    Title = "Another title",
+                    Stock = 2
+                }
+            };
+
+            return books;
         }
 
         private static Book GetBook(int stock)

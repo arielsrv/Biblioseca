@@ -7,29 +7,39 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Biblioseca.Web.Books
-{
-
-
-    public partial class List
-    {
-
+namespace Biblioseca.Web.Books {
+    
+    
+    public partial class List {
+        
         /// <summary>
         /// GridViewBooks control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
+        /// To modify, move the field declaration from the designer file to a code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView GridViewBooks;
-
+        
         /// <summary>
         /// linkCreateBook control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
+        /// To modify, move the field declaration from the designer file to a code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton linkCreateBook;
+        
+        /// <summary>
+        /// Master property.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated property.
+        /// </remarks>
+        public new Biblioseca.Web.SiteMaster Master {
+            get {
+                return ((Biblioseca.Web.SiteMaster)(base.Master));
+            }
+        }
     }
 }

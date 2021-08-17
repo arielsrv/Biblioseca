@@ -7,56 +7,66 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Biblioseca.Web.Authors
-{
-
-
-    public partial class Edit
-    {
-
+namespace Biblioseca.Web.Authors {
+    
+    
+    public partial class Edit {
+        
         /// <summary>
         /// textBoxFirstName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
+        /// To modify, move the field declaration from the designer file to a code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox textBoxFirstName;
-
+        
         /// <summary>
         /// textBoxFirstNameRequiredFieldValidator control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
+        /// To modify, move the field declaration from the designer file to a code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator textBoxFirstNameRequiredFieldValidator;
-
+        
         /// <summary>
         /// textBoxLastName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
+        /// To modify, move the field declaration from the designer file to a code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox textBoxLastName;
-
+        
         /// <summary>
         /// textBoxLastNameRequiredFieldValidator control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
+        /// To modify, move the field declaration from the designer file to a code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator textBoxLastNameRequiredFieldValidator;
-
+        
         /// <summary>
         /// buttonEditAuthor control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
+        /// To modify, move the field declaration from the designer file to a code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button buttonEditAuthor;
+        
+        /// <summary>
+        /// Master property.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated property.
+        /// </remarks>
+        public new Biblioseca.Web.SiteMaster Master {
+            get {
+                return ((Biblioseca.Web.SiteMaster)(base.Master));
+            }
+        }
     }
 }

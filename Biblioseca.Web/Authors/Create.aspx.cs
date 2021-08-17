@@ -1,10 +1,10 @@
-﻿using Biblioseca.DataAccess.Authors;
+﻿using System;
+using Biblioseca.DataAccess.Authors;
 using Biblioseca.Model;
 using Biblioseca.Service;
 using Biblioseca.Web.Common;
-using System;
 
-namespace Biblioseca.Web
+namespace Biblioseca.Web.Authors
 {
     public partial class CreateNewAuthor : BasePage
     {

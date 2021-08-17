@@ -4,5 +4,6 @@ namespace Biblioseca.DataAccess.Books.Filters
     {
         public string Title { get; set; }
         public string AuthorFirstName { get; set; }
+        public bool Stock { get; set; }
     }
 }

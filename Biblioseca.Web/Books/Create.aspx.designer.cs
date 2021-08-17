@@ -7,128 +7,138 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Biblioseca.Web.Books
-{
-
-
-    public partial class Create
-    {
-
+namespace Biblioseca.Web.Books {
+    
+    
+    public partial class Create {
+        
         /// <summary>
         /// textBoxTitle control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
+        /// To modify, move the field declaration from the designer file to a code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox textBoxTitle;
-
+        
         /// <summary>
         /// textBoxFirstNameRequiredFieldValidator control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
+        /// To modify, move the field declaration from the designer file to a code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator textBoxFirstNameRequiredFieldValidator;
-
+        
         /// <summary>
         /// textBoxDescription control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
+        /// To modify, move the field declaration from the designer file to a code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox textBoxDescription;
-
+        
         /// <summary>
         /// textBoxDescriptionRequiredFieldValidator control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
+        /// To modify, move the field declaration from the designer file to a code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator textBoxDescriptionRequiredFieldValidator;
-
+        
         /// <summary>
         /// textBoxISBN control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
+        /// To modify, move the field declaration from the designer file to a code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox textBoxISBN;
-
+        
         /// <summary>
         /// textBoxISBNRequiredFieldValidator control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
+        /// To modify, move the field declaration from the designer file to a code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator textBoxISBNRequiredFieldValidator;
-
+        
         /// <summary>
         /// textBoxPrice control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
+        /// To modify, move the field declaration from the designer file to a code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox textBoxPrice;
-
+        
         /// <summary>
         /// textBoxPriceRequiredFieldValidator control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
+        /// To modify, move the field declaration from the designer file to a code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.CompareValidator textBoxPriceRequiredFieldValidator;
-
+        
         /// <summary>
         /// authorList control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
+        /// To modify, move the field declaration from the designer file to a code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList authorList;
-
+        
         /// <summary>
         /// categoryList control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
+        /// To modify, move the field declaration from the designer file to a code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList categoryList;
-
+        
         /// <summary>
         /// textBoxStock control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
+        /// To modify, move the field declaration from the designer file to a code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox textBoxStock;
-
+        
         /// <summary>
         /// textBoxStockRequiredFieldValidator control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
+        /// To modify, move the field declaration from the designer file to a code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.CompareValidator textBoxStockRequiredFieldValidator;
-
+        
         /// <summary>
         /// buttonCreateBook control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
+        /// To modify, move the field declaration from the designer file to a code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button buttonCreateBook;
+        
+        /// <summary>
+        /// Master property.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated property.
+        /// </remarks>
+        public new Biblioseca.Web.SiteMaster Master {
+            get {
+                return ((Biblioseca.Web.SiteMaster)(base.Master));
+            }
+        }
     }
 }
