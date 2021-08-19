@@ -1,7 +1,11 @@
 @echo off
 
 cmd /c "nuget restore Biblioseca.sln"
-cmd /c "cd /d src && msbuild Biblioseca.sln /m /nr:false /t:Rebuild /p:Configuration=%compilationMode% /p:Platform="Any CPU" /verbosity:minimal /p:CreateHardLinksForCopyLocalIfPossible=true" /clp:Summary;ShowCommandLine;ErrorsOnly
+cmd /c "msbuild Biblioseca.sln /m /nr:false /t:Rebuild /p:Configuration=Debug /p:Platform="Any CPU" /verbosity:minimal /p:CreateHardLinksForCopyLocalIfPossible=true" /clp:Summary;ShowCommandLine;ErrorsOnly
+
+cmd /c "cd /d Biblioseca.Test && msbuild /m /nr:false /t:Rebuild /p:Configuration=Debug /verbosity:minimal /clp:Summary;ShowCommandLine;ErrorsOnly
+
+
 
 mkdir TestResults
 
