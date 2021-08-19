@@ -1,29 +1,29 @@
-using System.Collections.Generic;
-using System.Linq;
 using Biblioseca.DataAccess.Books;
 using Biblioseca.DataAccess.Books.Filters;
 using Biblioseca.Model;
 using Biblioseca.Service;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using NHibernate;
+using NUnit.Framework;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Biblioseca.Test.Services
 {
-    [TestClass]
+    [TestFixture]
     public class BookServiceTest
     {
         private Mock<BookDao> bookDao;
         private Mock<ISessionFactory> sessionFactory;
 
-        [TestInitialize]
+        [SetUp]
         public void SetUp()
         {
             this.sessionFactory = new Mock<ISessionFactory>();
             this.bookDao = new Mock<BookDao>(this.sessionFactory.Object);
         }
 
-        [TestMethod]
+        [Test]
         public void IsAvailable()
         {
             const int bookId = 1;
@@ -35,7 +35,7 @@ namespace Biblioseca.Test.Services
             Assert.IsTrue(isAvailable);
         }
 
-        [TestMethod]
+        [Test]
         public void IsNotAvailable()
         {
             const int bookId = 1;
@@ -47,7 +47,7 @@ namespace Biblioseca.Test.Services
             Assert.IsFalse(isAvailable);
         }
 
-        [TestMethod]
+        [Test]
         public void GetAvailableBooks()
         {
             this.bookDao.Setup(dao => dao.GetByFilter(It.IsAny<BookFilterDto>())).Returns(GetBooks());
@@ -55,7 +55,7 @@ namespace Biblioseca.Test.Services
             BookService bookService = new BookService(this.bookDao.Object);
 
             IEnumerable<Book> books = bookService.GetAvailableBooks();
-            
+
             Assert.IsTrue(books.Any());
         }
 

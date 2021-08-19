@@ -1,22 +1,22 @@
 using Biblioseca.DataAccess.Authors;
 using Biblioseca.Model;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NHibernate;
 using NHibernate.Cfg;
 using NHibernate.Context;
+using NUnit.Framework;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace Biblioseca.Test.DataAccess
 {
-    [TestClass]
+    [TestFixture]
     public class AuthorDaoTest
     {
         private ISessionFactory sessionFactory;
         private ISession session;
         private ITransaction transaction;
 
-        [TestInitialize]
+        [SetUp]
         public void SetUp()
         {
             this.sessionFactory = new Configuration().Configure().BuildSessionFactory();
@@ -25,14 +25,14 @@ namespace Biblioseca.Test.DataAccess
             CurrentSessionContext.Bind(this.session);
         }
 
-        [TestCleanup]
+        [TearDown]
         public void CleanUp()
         {
             this.transaction.Rollback();
             this.session.Close();
         }
 
-        [TestMethod]
+        [Test]
         public void GetAll()
         {
             AuthorDao authorDao = new AuthorDao(this.sessionFactory);
@@ -42,7 +42,7 @@ namespace Biblioseca.Test.DataAccess
             Assert.IsTrue(authors.Any());
         }
 
-        [TestMethod]
+        [Test]
         public void GetByHqlQuery()
         {
             AuthorDao authorDao = new AuthorDao(this.sessionFactory);
@@ -58,7 +58,7 @@ namespace Biblioseca.Test.DataAccess
             Assert.AreEqual("Steve", author.FirstName);
         }
 
-        [TestMethod]
+        [Test]
         public void GetByQuery()
         {
             AuthorDao authorDao = new AuthorDao(this.sessionFactory);

@@ -6,17 +6,15 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "resources", "resources", "{9E790765-6F01-4BB7-9147-4BD474A8324F}"
 	ProjectSection(SolutionItems) = preProject
 		resources\1.Modelo-de-negocio.md = resources\1.Modelo-de-negocio.md
+		resources\7.-Webforms.md = resources\7.-Webforms.md
 		resources\example.config = resources\example.config
 		resources\iis.png = resources\iis.png
 		resources\template.hbm.xml = resources\template.hbm.xml
-		resources\7.-Webforms.md = resources\7.-Webforms.md
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Biblioseca.ConsoleApp", "Biblioseca.ConsoleApp\Biblioseca.ConsoleApp.csproj", "{2E9E8FD2-663E-4391-A483-E5B23BDAF788}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Biblioseca.Model", "Biblioseca.Model\Biblioseca.Model.csproj", "{38F28D76-CFE5-43C2-B4B3-77F6344C994D}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Biblioseca.Test", "Biblioseca.Test\Biblioseca.Test.csproj", "{02D14B63-4308-4FD7-A616-940AFE04D369}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Biblioseca.DataAccess", "Biblioseca.DataAccess\Biblioseca.DataAccess.csproj", "{8D5F9A06-5683-4BD4-B901-909BADA80B8C}"
 EndProject
@@ -24,8 +22,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "scripts", "scripts", "{6178
 	ProjectSection(SolutionItems) = preProject
 		scripts\001.sql = scripts\001.sql
 		scripts\002.sql = scripts\002.sql
-		scripts\db.sql = scripts\db.sql
 		scripts\003.sql = scripts\003.sql
+		scripts\db.sql = scripts\db.sql
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Biblioseca.Service", "Biblioseca.Service\Biblioseca.Service.csproj", "{82A4DE05-7D9E-4FD5-9B9F-0B9815E4301F}"
@@ -36,6 +34,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Biblioseca.Test", "Biblioseca.Test\Biblioseca.Test.csproj", "{6FD01138-026A-41A5-B8E9-42529612B459}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,10 +51,6 @@ Global
 		{38F28D76-CFE5-43C2-B4B3-77F6344C994D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{38F28D76-CFE5-43C2-B4B3-77F6344C994D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{38F28D76-CFE5-43C2-B4B3-77F6344C994D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{02D14B63-4308-4FD7-A616-940AFE04D369}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{02D14B63-4308-4FD7-A616-940AFE04D369}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{02D14B63-4308-4FD7-A616-940AFE04D369}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{02D14B63-4308-4FD7-A616-940AFE04D369}.Release|Any CPU.Build.0 = Release|Any CPU
 		{8D5F9A06-5683-4BD4-B901-909BADA80B8C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{8D5F9A06-5683-4BD4-B901-909BADA80B8C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8D5F9A06-5683-4BD4-B901-909BADA80B8C}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -67,6 +63,10 @@ Global
 		{53DEAE4A-AE47-4D29-B4D6-4CEB7174E106}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{53DEAE4A-AE47-4D29-B4D6-4CEB7174E106}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{53DEAE4A-AE47-4D29-B4D6-4CEB7174E106}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6FD01138-026A-41A5-B8E9-42529612B459}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6FD01138-026A-41A5-B8E9-42529612B459}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6FD01138-026A-41A5-B8E9-42529612B459}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6FD01138-026A-41A5-B8E9-42529612B459}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
