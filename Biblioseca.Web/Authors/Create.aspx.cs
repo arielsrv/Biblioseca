@@ -19,7 +19,10 @@ namespace Biblioseca.Web.Authors
             AuthorService authorService = new AuthorService(authorDao);
 
             Author author = Author
-                .Create(textBoxFirstName.Text, textBoxLastName.Text);
+                .Create(
+                    textBoxFirstName.Text,
+                    textBoxLastName.Text
+                );
 
             authorService.Create(author);
 

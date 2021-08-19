@@ -35,13 +35,13 @@ namespace Biblioseca.Web.Authors
 
         protected void GridViewAuthors_RowEditing(object sender, GridViewEditEventArgs e)
         {
-            int authorId = Convert.ToInt32(this.GridViewAuthors.DataKeys[e.NewEditIndex].Values[0]);
+            int authorId = Convert.ToInt32(this.GridViewAuthors.DataKeys[e.NewEditIndex]?.Values?[0]);
             Response.Redirect(string.Format(Const.Pages.Author.Edit, authorId));
         }
 
         protected void GridViewAuthors_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
-            int authorId = Convert.ToInt32(this.GridViewAuthors.DataKeys[e.RowIndex].Values[0]);
+            int authorId = Convert.ToInt32(this.GridViewAuthors.DataKeys[e.RowIndex]?.Values?[0]);
             Author author = this.authorDao.Get(authorId);
             Ensure.NotNull(author, "Author no existe. ");
             this.authorDao.Delete(author);

@@ -10,7 +10,7 @@ namespace Biblioseca.Web.Common
             Response.Redirect(HttpContext
                 .Current
                 .Request
-                .AppRelativeCurrentExecutionFilePath);
+                .AppRelativeCurrentExecutionFilePath ?? string.Empty);
         }
     }
 }

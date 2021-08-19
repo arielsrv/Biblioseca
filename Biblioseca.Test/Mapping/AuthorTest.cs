@@ -137,7 +137,7 @@ namespace Biblioseca.Test.Mapping
 
             Assert.IsNotNull(createdPartner);
             Assert.IsNotNull(createdPartner.Borrows);
-            Assert.AreEqual(2, createdPartner.Borrows.Count());
+            Assert.AreEqual(2, createdPartner.Borrows.Count);
         }
     }
 }

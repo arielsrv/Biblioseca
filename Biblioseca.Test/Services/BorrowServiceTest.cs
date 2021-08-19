@@ -151,7 +151,7 @@ namespace Biblioseca.Test.Services
 
         private static Partner GetPartner()
         {
-            Partner partner = new Partner()
+            Partner partner = new Partner
             {
                 FirstName = "John",
                 LastName = "Smith",

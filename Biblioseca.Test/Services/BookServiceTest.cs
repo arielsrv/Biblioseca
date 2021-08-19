@@ -15,13 +15,11 @@ namespace Biblioseca.Test.Services
     {
         private Mock<BookDao> bookDao;
         private Mock<ISessionFactory> sessionFactory;
-        private Mock<ISession> session;
 
         [TestInitialize]
         public void SetUp()
         {
             this.sessionFactory = new Mock<ISessionFactory>();
-            this.session = new Mock<ISession>();
             this.bookDao = new Mock<BookDao>(this.sessionFactory.Object);
         }
 

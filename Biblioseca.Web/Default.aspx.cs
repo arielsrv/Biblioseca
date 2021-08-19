@@ -1,6 +1,4 @@
-﻿using Biblioseca.DataAccess.Authors;
-using Biblioseca.Model;
-using System;
+﻿using System;
 using System.Web.UI;
 
 namespace Biblioseca.Web

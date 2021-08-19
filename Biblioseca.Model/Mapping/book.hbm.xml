@@ -19,7 +19,7 @@
             <column name="Price" sql-type="decimal" not-null="false" />
         </property>
         <many-to-one name="Author" class="Author">
-            <column name="AuthorId" sql-type="int" not-null="true" />
+            <column name="AuthorId" sql-type="int" not-null="true"/>
         </many-to-one>
         <many-to-one name="Category" class="Category">
             <column name="CategoryId" sql-type="int" not-null="false" />

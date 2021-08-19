@@ -1,4 +1,5 @@
-﻿using Biblioseca.Model.Exceptions;
+﻿using System.Collections.Generic;
+using Biblioseca.Model.Exceptions;
 
 namespace Biblioseca.Model
 {
@@ -6,7 +7,8 @@ namespace Biblioseca.Model
     {
         public virtual string FirstName { get; set; }
         public virtual string LastName { get; set; }
-
+        public virtual bool Deleted { get; set; }
+        
         public static Author Create(string firstName, string lastName)
         {
             Ensure.NotNull(firstName, "El nombre no puede ser nulo. ");
@@ -31,6 +33,11 @@ namespace Biblioseca.Model
         {
             Ensure.NotNull(lastName, "El apellido no puede ser nulo. ");
             this.LastName = lastName;
+        }
+
+        public virtual void MarkAsDeleted()
+        {
+            this.Deleted = true;
         }
     }
 }
