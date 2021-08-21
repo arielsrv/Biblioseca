@@ -7,10 +7,16 @@ rem 		ReportGenerator
 rem 		NUnit
 rem 		NUnit.ConsoleRunner
 rem 		NUnit3TestAdapter
+rem
+rem   2. MSTest por NUnit
+rem      TestClass -> TestFixture
+rem      TestMethod -> Test
+rem      TestInitialize -> SetUp
+rem      TestCleanUp -> TearDown
 rem 		
-rem 	2. Ejecutar coverage.cmd
+rem 	3. Ejecutar coverage.cmd
 rem 	
-rem 	3. Abrir TestResults\index.html 
+rem 	4. Abrir TestResults\index.html 
 
 
 cmd /c "nuget restore Biblioseca.sln"
