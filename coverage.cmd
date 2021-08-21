@@ -1,10 +1,22 @@
 @echo off
 
+rem Coverage
+rem 	1. Instalar en Biblioseca.Test
+rem 		OpenCover
+rem 		ReportGenerator
+rem 		NUnit
+rem 		NUnit.ConsoleRunner
+rem 		NUnit3TestAdapter
+rem 		
+rem 	2. Ejecutar coverage.cmd
+rem 	
+rem 	3. Abrir TestResults\index.html 
+
+
 cmd /c "nuget restore Biblioseca.sln"
 cmd /c "msbuild Biblioseca.sln /m /nr:false /t:Rebuild /p:Configuration=Debug /p:Platform="Any CPU" /verbosity:minimal /p:CreateHardLinksForCopyLocalIfPossible=true" /clp:Summary;ShowCommandLine;ErrorsOnly
 
 cmd /c "cd /d Biblioseca.Test && msbuild /m /nr:false /t:Rebuild /p:Configuration=Debug /verbosity:minimal /clp:Summary;ShowCommandLine;ErrorsOnly
-
 
 
 mkdir TestResults
