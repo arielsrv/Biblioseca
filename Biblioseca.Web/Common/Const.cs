@@ -16,6 +16,15 @@
                 public const string List = "~/Books/List.aspx";
                 public const string Create = "~/Books/Create.aspx";
             }
+
+            public static class Borrow
+            {
+                public const string List = "~/Borrows/List.aspx";
+                public const string Create = "~/Borrows/Create.aspx";
+                public const string Edit = "~/Borrows/Edit.aspx?id={0}";
+                public const string Details = "~/Borrows/Details.aspx?id={0}";
+                public const string Delete = "~/Borrows/Delete.aspx?id={0}";
+            }
         }
     }
 }

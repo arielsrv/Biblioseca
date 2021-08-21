@@ -118,6 +118,8 @@
     <Content Include="Authors\List.aspx" />
     <Content Include="Books\Create.aspx" />
     <Content Include="Books\List.aspx" />
+    <Content Include="Borrows\Create.aspx" />
+    <Content Include="Borrows\List.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -202,6 +204,20 @@
     <Compile Include="Books\List.aspx.designer.cs">
       <DependentUpon>List.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Borrows\Create.aspx.cs">
+      <SubType>ASPXCodeBehind</SubType>
+      <DependentUpon>Create.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Borrows\Create.aspx.designer.cs">
+      <DependentUpon>Create.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Borrows\List.aspx.cs">
+      <SubType>ASPXCodeBehind</SubType>
+      <DependentUpon>List.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Borrows\List.aspx.designer.cs">
+      <DependentUpon>List.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Common\BasePage.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
@@ -245,9 +261,6 @@
     <Compile Include="ViewSwitcher.ascx.designer.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
     </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

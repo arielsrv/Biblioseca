@@ -44,5 +44,10 @@ namespace Biblioseca.Service
         {
             this.bookDao.Save(book);
         }
+
+        public Book Get(int bookId)
+        {
+            return this.bookDao.Get(bookId);
+        }
     }
 }

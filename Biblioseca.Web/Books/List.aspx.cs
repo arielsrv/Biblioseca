@@ -35,13 +35,13 @@ namespace Biblioseca.Web.Books
 
         protected void GridViewBooks_RowEditing(object sender, GridViewEditEventArgs e)
         {
-            int authorId = Convert.ToInt32(this.GridViewBooks.DataKeys[e.NewEditIndex].Values[0]);
+            int authorId = Convert.ToInt32(this.GridViewBooks.DataKeys[e.NewEditIndex]?.Values?[0]);
             Response.Redirect(string.Format(Const.Pages.Author.Edit, authorId));
         }
 
         protected void GridViewBooks_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
-            int bookId = Convert.ToInt32(this.GridViewBooks.DataKeys[e.RowIndex].Values[0]);
+            int bookId = Convert.ToInt32(this.GridViewBooks.DataKeys[e.RowIndex]?.Values?[0]);
             Book book = this.bookDao.Get(bookId);
             Ensure.NotNull(book, "Libro no existe. ");
             this.bookDao.Delete(book);

@@ -65,5 +65,15 @@ namespace Biblioseca.Service
 
             return true;
         }
+
+        public IEnumerable<Borrow> GetBorrows()
+        {
+            return borrowDao.GetAll();
+        }
+
+        public void Create(Borrow borrow)
+        {
+            this.borrowDao.Save(borrow);
+        }
     }
 }
