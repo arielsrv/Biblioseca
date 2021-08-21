@@ -7,7 +7,8 @@ using Biblioseca.DataAccess.Borrows;
 using Biblioseca.DataAccess.Partners;
 using Biblioseca.Model;
 using Biblioseca.Service;
-using Biblioseca.Web.Common;
+using static System.Convert;
+using static Biblioseca.Web.Common.Const;
 
 namespace Biblioseca.Web.Borrows
 {
@@ -29,7 +30,7 @@ namespace Biblioseca.Web.Borrows
 
         private void BindLinks()
         {
-            this.BackToList.NavigateUrl = Const.Pages.Borrow.List;
+            this.BackToList.NavigateUrl = Pages.Borrow.List;
             this.BackToList.DataBind();
         }
 
@@ -38,10 +39,10 @@ namespace Biblioseca.Web.Borrows
             PartnerService partnerService = new PartnerService(this.partnerDao);
             IEnumerable<Partner> partners = partnerService.GetAll();
 
-            this.partnerList.DataTextField = "value";
             this.partnerList.DataValueField = "key";
-            this.partnerList.DataSource = partners
-                .ToDictionary(partner => partner.Id, partner => $"{partner.Fullname}");
+            this.partnerList.DataTextField = "value";
+            this.partnerList.DataSource =
+                partners.ToDictionary(partner => partner.Id, partner => $"{partner.Fullname}");
             this.partnerList.DataBind();
         }
 
@@ -50,29 +51,28 @@ namespace Biblioseca.Web.Borrows
             BookService bookService = new BookService(this.bookDao);
             IEnumerable<Book> books = bookService.GetAvailableBooks();
 
-            this.bookList.DataTextField = "value";
             this.bookList.DataValueField = "key";
-            this.bookList.DataSource = books
-                .ToDictionary(book => book.Id, book => $"{book.Title}");
+            this.bookList.DataTextField = "value";
+            this.bookList.DataSource =
+                books.ToDictionary(book => book.Id, book => $"{book.Title}");
             this.bookList.DataBind();
         }
 
         protected void ButtonCreateBorrow_Click(object sender, EventArgs e)
         {
             BookService bookService = new BookService(this.bookDao);
-            Book book = bookService.Get(Convert.ToInt32(this.bookList.SelectedValue));
+            Book book = bookService.Get(ToInt32(this.bookList.SelectedValue));
 
             PartnerService partnerService = new PartnerService(this.partnerDao);
-            Partner partner = partnerService.Get(Convert.ToInt32(this.partnerList.SelectedValue));
+            Partner partner = partnerService.Get(ToInt32(this.partnerList.SelectedValue));
 
-            Borrow borrow = Borrow
-                .Create(book, partner);
+            Borrow borrow = Borrow.Create(book, partner);
 
             BorrowService borrowService = new BorrowService(this.borrowDao, this.bookDao, this.partnerDao);
-            
+
             borrowService.Create(borrow);
 
-            Response.Redirect(Const.Pages.Borrow.List);
+            Response.Redirect(Pages.Borrow.List);
         }
     }
 }
