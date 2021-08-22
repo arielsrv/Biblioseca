@@ -1,15 +1,11 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Web.UI;
 using Biblioseca.DataAccess.Books;
 using Biblioseca.DataAccess.Borrows;
 using Biblioseca.DataAccess.Partners;
 using Biblioseca.Model;
-using Biblioseca.Model.Exceptions;
 using Biblioseca.Service;
-using static System.Convert;
-using static Biblioseca.Web.Common.Const;
+using Biblioseca.Web.Common;
 
 namespace Biblioseca.Web.Borrows
 {
@@ -31,38 +27,32 @@ namespace Biblioseca.Web.Borrows
 
         private void BindLinks()
         {
-            this.BackToList.NavigateUrl = Pages.Borrow.List;
+            this.BackToList.NavigateUrl = Const.Pages.Borrow.List;
             this.BackToList.DataBind();
         }
 
         private void BindPartners()
         {
             PartnerService partnerService = new PartnerService(this.partnerDao);
-            IEnumerable<Partner> partners = partnerService.GetAll();
-
-            this.partnerList.DataValueField = "key";
-            this.partnerList.DataTextField = "value";
-            this.partnerList.DataSource =
-                partners.ToDictionary(partner => partner.Id, partner => $"{partner.Fullname}");
+            this.partnerList.DataValueField = nameof(Partner.Id);
+            this.partnerList.DataTextField = nameof(Partner.Fullname);
+            this.partnerList.DataSource = partnerService.GetAll();
             this.partnerList.DataBind();
         }
 
         private void BindBooks()
         {
             BookService bookService = new BookService(this.bookDao);
-            IEnumerable<Book> books = bookService.GetAvailableBooks();
-
-            this.bookList.DataValueField = "key";
-            this.bookList.DataTextField = "value";
-            this.bookList.DataSource =
-                books.ToDictionary(book => book.Id, book => $"{book.Title}");
+            this.bookList.DataValueField = nameof(Book.Id);
+            this.bookList.DataTextField = nameof(Book.Title);
+            this.bookList.DataSource = bookService.GetAvailableBooks();
             this.bookList.DataBind();
         }
 
         protected void ButtonCreateBorrow_Click(object sender, EventArgs e)
         {
-            int bookId = ToInt32(this.bookList.SelectedValue);
-            int partnerId = ToInt32(this.partnerList.SelectedValue);
+            int bookId = Convert.ToInt32(this.bookList.SelectedValue);
+            int partnerId = Convert.ToInt32(this.partnerList.SelectedValue);
 
             BorrowService borrowService = new BorrowService(this.borrowDao, this.bookDao, this.partnerDao);
 
@@ -70,10 +60,10 @@ namespace Biblioseca.Web.Borrows
 
             if (result.HasError)
             {
-                Response.Redirect(Pages.Borrow.BusinessError);
+                Response.Redirect(Const.Pages.Borrow.BusinessError);
             }
 
-            Response.Redirect(Pages.Borrow.Congrats);
+            Response.Redirect(Const.Pages.Borrow.Congrats);
         }
     }
 }
