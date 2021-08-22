@@ -51,14 +51,14 @@ namespace Biblioseca.Web.Borrows
 
         protected void ButtonCreateBorrow_Click(object sender, EventArgs e)
         {
-            int bookId = Convert.ToInt32(this.bookList.SelectedValue);
-            int partnerId = Convert.ToInt32(this.partnerList.SelectedValue);
+            int bookId = this.bookList.SelectedValue.ToInt32();
+            int partnerId = this.partnerList.SelectedValue.ToInt32();
 
             BorrowService borrowService = new BorrowService(this.borrowDao, this.bookDao, this.partnerDao);
 
-            BorrowDTO result = borrowService.BorrowABookForPartner(bookId, partnerId);
+            BorrowDTO borrowDto = borrowService.BorrowABookForPartner(bookId, partnerId);
 
-            if (result.HasError)
+            if (borrowDto.HasError)
             {
                 Response.Redirect(Const.Pages.Borrow.BusinessError);
             }
