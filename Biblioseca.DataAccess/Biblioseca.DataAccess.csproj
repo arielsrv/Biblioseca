@@ -64,10 +64,12 @@
   <ItemGroup>
     <Compile Include="Authors\AuthorDao.cs" />
     <Compile Include="Authors\IAuthorDao.cs" />
+    <Compile Include="BaseDTO.cs" />
     <Compile Include="Books\BookDao.cs" />
     <Compile Include="Books\Filters\BookFilterDto.cs" />
     <Compile Include="Books\IBookDao.cs" />
     <Compile Include="Borrows\BorrowDao.cs" />
+    <Compile Include="Borrows\BorrowDTO.cs" />
     <Compile Include="Borrows\IBorrowDao.cs" />
     <Compile Include="Categories\CategoryDao.cs" />
     <Compile Include="Categories\ICategoryDao.cs" />

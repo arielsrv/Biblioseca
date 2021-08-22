@@ -66,8 +66,14 @@ namespace Biblioseca.Web.Borrows
 
             BorrowService borrowService = new BorrowService(this.borrowDao, this.bookDao, this.partnerDao);
 
-            borrowService.BorrowABook(bookId, partnerId);
+            BorrowDTO result = borrowService.BorrowABookForPartner(bookId, partnerId);
 
+            if (result.HasError)
+            {
+                // Redirect to friendly or error page
+                throw new BusinessRuleException(result.ErrorMessage);
+            }
+            
             Response.Redirect(Pages.Borrow.List);
         }
     }
