@@ -11,8 +11,8 @@ namespace Biblioseca.Web
     public class Global : HttpApplication
     {
         public static readonly ISessionFactory SessionFactory = new Configuration()
-                .Configure()
-                .BuildSessionFactory();
+            .Configure()
+            .BuildSessionFactory();
 
         private void Application_Start(object sender, EventArgs e)
         {
@@ -30,7 +30,8 @@ namespace Biblioseca.Web
 
         protected void Application_EndRequest(object sender, EventArgs e)
         {
-            if (SessionFactory.GetCurrentSession().IsOpen && SessionFactory.GetCurrentSession().GetCurrentTransaction().IsActive)
+            if (SessionFactory.GetCurrentSession().IsOpen &&
+                SessionFactory.GetCurrentSession().GetCurrentTransaction().IsActive)
             {
                 SessionFactory.GetCurrentSession().GetCurrentTransaction().Commit();
                 SessionFactory.GetCurrentSession().Close();
@@ -41,6 +42,17 @@ namespace Biblioseca.Web
         {
             SessionFactory.GetCurrentSession().GetCurrentTransaction().Rollback();
             SessionFactory.GetCurrentSession().Close();
+
+            Exception exception = Server.GetLastError();
+
+            if (exception is HttpUnhandledException)
+            {
+                if (exception.InnerException != null)
+                {
+                    exception = new Exception(exception.InnerException.Message);
+                    Server.Transfer("../Error.aspx?handler=Application_Error%20-%20Global.asax", true);
+                }
+            }
         }
     }
 }

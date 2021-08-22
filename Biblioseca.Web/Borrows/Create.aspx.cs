@@ -6,6 +6,7 @@ using Biblioseca.DataAccess.Books;
 using Biblioseca.DataAccess.Borrows;
 using Biblioseca.DataAccess.Partners;
 using Biblioseca.Model;
+using Biblioseca.Model.Exceptions;
 using Biblioseca.Service;
 using static System.Convert;
 using static Biblioseca.Web.Common.Const;
@@ -60,17 +61,12 @@ namespace Biblioseca.Web.Borrows
 
         protected void ButtonCreateBorrow_Click(object sender, EventArgs e)
         {
-            BookService bookService = new BookService(this.bookDao);
-            Book book = bookService.Get(ToInt32(this.bookList.SelectedValue));
-
-            PartnerService partnerService = new PartnerService(this.partnerDao);
-            Partner partner = partnerService.Get(ToInt32(this.partnerList.SelectedValue));
-
-            Borrow borrow = Borrow.Create(book, partner);
+            int bookId = ToInt32(this.bookList.SelectedValue);
+            int partnerId = ToInt32(this.partnerList.SelectedValue);
 
             BorrowService borrowService = new BorrowService(this.borrowDao, this.bookDao, this.partnerDao);
 
-            borrowService.Create(borrow);
+            borrowService.BorrowABook(bookId, partnerId);
 
             Response.Redirect(Pages.Borrow.List);
         }
