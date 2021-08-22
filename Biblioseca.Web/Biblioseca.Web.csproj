@@ -118,6 +118,8 @@
     <Content Include="Authors\List.aspx" />
     <Content Include="Books\Create.aspx" />
     <Content Include="Books\List.aspx" />
+    <Content Include="Borrows\BusinessError.aspx" />
+    <Content Include="Borrows\Congrats.aspx" />
     <Content Include="Borrows\Create.aspx" />
     <Content Include="Borrows\List.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
@@ -204,6 +206,20 @@
     </Compile>
     <Compile Include="Books\List.aspx.designer.cs">
       <DependentUpon>List.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Borrows\BusinessError.aspx.cs">
+      <SubType>ASPXCodeBehind</SubType>
+      <DependentUpon>BusinessError.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Borrows\BusinessError.aspx.designer.cs">
+      <DependentUpon>BusinessError.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Borrows\Congrats.aspx.cs">
+      <SubType>ASPXCodeBehind</SubType>
+      <DependentUpon>Congrats.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Borrows\Congrats.aspx.designer.cs">
+      <DependentUpon>Congrats.aspx</DependentUpon>
     </Compile>
     <Compile Include="Borrows\Create.aspx.cs">
       <SubType>ASPXCodeBehind</SubType>

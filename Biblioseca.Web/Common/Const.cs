@@ -24,6 +24,8 @@
                 public const string Edit = "~/Borrows/Edit.aspx?id={0}";
                 public const string Details = "~/Borrows/Details.aspx?id={0}";
                 public const string Delete = "~/Borrows/Delete.aspx?id={0}";
+                public const string Congrats = "~/Borrows/Congrats.aspx";
+                public const string BusinessError = "~/Borrows/BusinessError.aspx   ";
             }
         }
     }

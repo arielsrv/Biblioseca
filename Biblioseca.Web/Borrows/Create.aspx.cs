@@ -70,11 +70,10 @@ namespace Biblioseca.Web.Borrows
 
             if (result.HasError)
             {
-                // Redirect to friendly or error page
-                throw new BusinessRuleException(result.ErrorMessage);
+                Response.Redirect(Pages.Borrow.BusinessError);
             }
-            
-            Response.Redirect(Pages.Borrow.List);
+
+            Response.Redirect(Pages.Borrow.Congrats);
         }
     }
 }
