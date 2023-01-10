@@ -1,0 +1,30 @@
+version: 2
+updates:
+  - package-ecosystem: "nuget"
+    directory: "/Biblioseca.ConsoleApp"
+    schedule:
+      interval: "daily"   
+  - package-ecosystem: "nuget"
+    directory: "/Biblioseca.DataAccess"
+    schedule:
+      interval: "daily"
+  - package-ecosystem: "nuget"
+    directory: "/Biblioseca.Model"
+    schedule:
+      interval: "daily"
+  - package-ecosystem: "nuget"
+    directory: "/Biblioseca.Service"
+    schedule:
+      interval: "daily"
+  - package-ecosystem: "nuget"
+    directory: "/Biblioseca.Test"
+    schedule:
+      interval: "daily"      
+  - package-ecosystem: "nuget"
+    directory: "/Biblioseca.Web"
+    schedule:
+      interval: "daily"      
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: daily
