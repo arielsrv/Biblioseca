@@ -12,6 +12,10 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
+      - name: Setup NuGet.exe for use with actions
+        uses: NuGet/setup-nuget@v1.2.0
+        run: nuget restore Biblioseca.sln
+
       - name: Add msbuild to PATH
         uses: microsoft/setup-msbuild@v1.1
 
