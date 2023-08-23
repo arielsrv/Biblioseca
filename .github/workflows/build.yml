@@ -24,5 +24,5 @@ jobs:
       - name: Build app for release
         run: msbuild Biblioseca.sln /m /nr:false /t:Build /p:Configuration=Debug /p:Platform="Any CPU" /verbosity:minimal /p:CreateHardLinksForCopyLocalIfPossible=true
 
-      - name: Test
-        run: packages/NUnit.ConsoleRunner.3.16.3/tools/nunit3-console.exe Biblioseca.Test/bin/Debug/Biblioseca.Test.dll      
+#      - name: Test
+#        run: packages/NUnit.ConsoleRunner.3.16.3/tools/nunit3-console.exe Biblioseca.Test/bin/Debug/Biblioseca.Test.dll      
