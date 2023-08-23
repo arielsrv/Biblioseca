@@ -27,6 +27,7 @@ cmd /c "cd /d Biblioseca.Test && msbuild /m /nr:false /t:Rebuild /p:Configuratio
 
 mkdir TestResults
 
-packages\OpenCover.4.7.1221\tools\OpenCover.Console.exe -register:user -target:"packages\NUnit.ConsoleRunner.3.12.0\tools\nunit3-console.exe" -targetargs:"Biblioseca.Test\bin\Debug\Biblioseca.Test.dll" -output:TestResults\opencover.xml -register:user -filter:"+[*]* -[Moq*]*-[Biblioseca.Test*]*"
-
+packages\OpenCover.4.7.1221\tools\OpenCover.Console.exe -register:user -target:"packages\NUnit.ConsoleRunner.3.16.3\tools\nunit3-console.exe" -targetargs:"Biblioseca.Test\bin\Debug\Biblioseca.Test.dll" -output:TestResults\opencover.xml -register:user -filter:"+[*]* -[Moq*]*-[Biblioseca.Test*]*"
 packages\ReportGenerator.4.8.12\tools\net47\ReportGenerator.exe  -reports:TestResults\opencover.xml -targetdir:TestResults
+
+rem  mono ./packages/NUnit.ConsoleRunner.3.16.3/tools/nunit3-console.exe Biblioseca.Test/bin/Debug/Biblioseca.Test.dll
