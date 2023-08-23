@@ -19,7 +19,7 @@ jobs:
         run: nuget restore Biblioseca.sln
 
       - name: Add msbuild to PATH
-        uses: microsoft/setup-msbuild@v1.1
+        uses: microsoft/setup-msbuild@v1.3
 
       - name: Build app for release
         run: msbuild Biblioseca.sln /m /nr:false /t:Build /p:Configuration=Release /p:Platform="Any CPU" /verbosity:minimal /p:CreateHardLinksForCopyLocalIfPossible=true
