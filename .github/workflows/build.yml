@@ -16,4 +16,4 @@ jobs:
         uses: microsoft/setup-msbuild@v1.1
 
       - name: Build app for release
-        run: msbuild Biblioseca.sln /m /nr:false /t:Build /p:Configuration=Release /p:Platform="Any CPU" /verbosity:minimal /p:CreateHardLinksForCopyLocalIfPossible=true /clp:Summary;ShowCommandLine;ErrorsOnly
+        run: msbuild Biblioseca.sln /m /nr:false /t:Build /p:Configuration=Release /p:Platform="Any CPU" /verbosity:minimal /p:CreateHardLinksForCopyLocalIfPossible=true /clp:Summary;ErrorsOnly
