@@ -1,0 +1,25 @@
+# This workflow will build a golang project
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-go
+
+name: build
+
+on: [ push ]
+
+jobs:
+
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup NuGet.exe for use with actions
+        uses: NuGet/setup-nuget@v1.2.0
+
+      - name: Nuget Restore
+        run: nuget restore Biblioseca.sln
+
+      - name: Add msbuild to PATH
+        uses: microsoft/setup-msbuild@v1.3
+
+      - name: Build app for release
+        run: msbuild Biblioseca.sln /m /nr:false /t:Build /p:Configuration=Release /p:Platform="Any CPU" /verbosity:minimal /p:CreateHardLinksForCopyLocalIfPossible=true
