@@ -24,11 +24,5 @@ jobs:
       - name: Build app for release
         run: msbuild Biblioseca.sln /m /nr:false /t:Build /p:Configuration=Release /p:Platform="Any CPU" /verbosity:minimal /p:CreateHardLinksForCopyLocalIfPossible=true
 
-      - name: Create Folder
-        run: mkdir TestResults
-
-      - name: OpenCover
-        run: packages\OpenCover.4.7.1221\tools\OpenCover.Console.exe -register:user -target:"packages\NUnit.ConsoleRunner.3.16.3\tools\nunit3-console.exe" -targetargs:"Biblioseca.Test\bin\Debug\Biblioseca.Test.dll" -output:TestResults\opencover.xml -register:user -filter:"+[*]* -[Moq*]*-[Biblioseca.Test*]*"
-
-      - name: ReportGenerator
-        run: packages\ReportGenerator.4.1.24\tools\net47\ReportGenerator.exe  -reports:TestResults\opencover.xml -targetdir:TestResults
+      - name: Test
+        run: packages/NUnit.ConsoleRunner.3.16.3/tools/nunit3-console.exe Biblioseca.Test/bin/Debug/Biblioseca.Test.dll      
