@@ -15,12 +15,12 @@ namespace Biblioseca.Service
 
         public IEnumerable<Partner> GetAll()
         {
-            return this.partnerDao.GetAll();
+            return partnerDao.GetAll();
         }
 
         public Partner Get(int partnerId)
         {
-            return this.partnerDao.Get(partnerId);
+            return partnerDao.Get(partnerId);
         }
     }
 }

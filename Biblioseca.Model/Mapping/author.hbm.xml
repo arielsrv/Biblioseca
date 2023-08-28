@@ -5,13 +5,13 @@
                    namespace="Biblioseca.Model">
     <class name="Author" table="Authors">
         <id name="Id">
-            <generator class="identity" />
+            <generator class="identity"/>
         </id>
         <property name="FirstName">
-            <column name="FirstName" length="200" not-null="true" />
+            <column name="FirstName" length="200" not-null="true"/>
         </property>
         <property name="LastName">
-            <column name="LastName" length="200" not-null="true" />
+            <column name="LastName" length="200" not-null="true"/>
         </property>
     </class>
 </hibernate-mapping>

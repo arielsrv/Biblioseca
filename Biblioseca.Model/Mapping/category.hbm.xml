@@ -5,10 +5,10 @@
                    namespace="Biblioseca.Model">
     <class name="Category" table="Categories">
         <id name="Id">
-            <generator class="identity" />
+            <generator class="identity"/>
         </id>
         <property name="Name">
-            <column name="Name" length="200" not-null="true" />
+            <column name="Name" length="200" not-null="true"/>
         </property>
     </class>
 </hibernate-mapping>

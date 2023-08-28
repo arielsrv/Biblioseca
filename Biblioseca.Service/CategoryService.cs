@@ -1,6 +1,6 @@
-﻿using Biblioseca.DataAccess.Categories;
+﻿using System.Collections.Generic;
+using Biblioseca.DataAccess.Categories;
 using Biblioseca.Model;
-using System.Collections.Generic;
 
 namespace Biblioseca.Service
 {
@@ -15,12 +15,12 @@ namespace Biblioseca.Service
 
         public IEnumerable<Category> GetAll()
         {
-            return this.categoryDao.GetAll();
+            return categoryDao.GetAll();
         }
 
         public Category Get(int id)
         {
-            return this.categoryDao.Get(id);
+            return categoryDao.Get(id);
         }
     }
 }

@@ -45,12 +45,11 @@ namespace Biblioseca.Web
 
             Exception exception = Server.GetLastError();
 
-            if (exception is HttpUnhandledException)
-                if (exception.InnerException != null)
-                {
-                    exception = new Exception(exception.InnerException.Message);
-                    Server.Transfer("../Error.aspx?handler=Application_Error%20-%20Global.asax", true);
-                }
+            if (!(exception is HttpUnhandledException)) return;
+            if (exception.InnerException != null)
+            {
+                Server.Transfer("../Error.aspx?handler=Application_Error%20-%20Global.asax", true);
+            }
         }
     }
 }

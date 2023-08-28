@@ -1,6 +1,6 @@
-﻿using Biblioseca.DataAccess.Authors;
+﻿using System.Collections.Generic;
+using Biblioseca.DataAccess.Authors;
 using Biblioseca.Model;
-using System.Collections.Generic;
 
 namespace Biblioseca.Service
 {
@@ -15,22 +15,22 @@ namespace Biblioseca.Service
 
         public IEnumerable<Author> GetAll()
         {
-            return this.authorDao.GetAll();
+            return authorDao.GetAll();
         }
 
         public void Create(Author author)
         {
-            this.authorDao.Save(author);
+            authorDao.Save(author);
         }
 
         public Author Get(int authorId)
         {
-            return this.authorDao.Get(authorId);
+            return authorDao.Get(authorId);
         }
 
         public void Update(Author author)
         {
-            this.authorDao.Save(author);
+            authorDao.Save(author);
         }
     }
 }

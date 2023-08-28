@@ -9,14 +9,17 @@ function DetailsView() {
     this.panelElement = null;
     this.callback = null;
 }
+
 function DetailsView_createPropertyString() {
     return createPropertyStringFromValues_DetailsView(this.pageIndex, this.dataKeys);
 }
+
 function DetailsView_setStateValue() {
     this.stateField.value = this.createPropertyString();
 }
-function DetailsView_OnCallback (result, context) {
-    var value = new String(result);
+
+function DetailsView_OnCallback(result, context) {
+    var value = String(result);
     var valsArray = value.split("|");
     var innerHtml = valsArray[2];
     for (var i = 3; i < valsArray.length; i++) {
@@ -25,10 +28,12 @@ function DetailsView_OnCallback (result, context) {
     context.panelElement.innerHTML = innerHtml;
     context.stateField.value = createPropertyStringFromValues_DetailsView(valsArray[0], valsArray[1]);
 }
+
 function DetailsView_getHiddenFieldContents(arg) {
     return arg + "|" + this.stateField.value;
 }
+
 function createPropertyStringFromValues_DetailsView(pageIndex, dataKeys) {
-    var value = new Array(pageIndex, dataKeys);
+    var value = [pageIndex, dataKeys];
     return value.join("|");
 }

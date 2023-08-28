@@ -5,10 +5,10 @@
                    namespace="{namespace}">
     <class name="{className}" table="{tableName}">
         <id name="Id">
-            <generator class="identity" />
+            <generator class="identity"/>
         </id>
         <property name="{propertyName}">
-            <column name="{columnName}" length="200" not-null="true" />
+            <column name="{columnName}" length="200" not-null="true"/>
         </property>
     </class>
 </hibernate-mapping>

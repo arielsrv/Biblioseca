@@ -5,28 +5,28 @@
                    namespace="Biblioseca.Model">
     <class name="Book" table="Books">
         <id name="Id">
-            <generator class="identity" />
+            <generator class="identity"/>
         </id>
         <property name="Title">
-            <column name="Title" length="200" not-null="true" />
+            <column name="Title" length="200" not-null="true"/>
         </property>
         <property name="Description">
-            <column name="Description" length="200" not-null="true" />
+            <column name="Description" length="200" not-null="true"/>
         </property>
         <property name="ISBN">
-            <column name="ISBN" length="200" not-null="true" />
+            <column name="ISBN" length="200" not-null="true"/>
         </property>
         <property name="Price">
-            <column name="Price" sql-type="decimal" not-null="false" />
+            <column name="Price" sql-type="decimal" not-null="false"/>
         </property>
         <many-to-one name="Author" class="Author">
-            <column name="AuthorId" sql-type="int" not-null="true" />
+            <column name="AuthorId" sql-type="int" not-null="true"/>
         </many-to-one>
         <many-to-one name="Category" class="Category">
-            <column name="CategoryId" sql-type="int" not-null="false" />
+            <column name="CategoryId" sql-type="int" not-null="false"/>
         </many-to-one>
         <property name="Stock">
-            <column name="Stock" sql-type="int" not-null="false" />
+            <column name="Stock" sql-type="int" not-null="false"/>
         </property>
     </class>
 </hibernate-mapping>
