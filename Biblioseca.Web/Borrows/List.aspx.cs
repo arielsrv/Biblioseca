@@ -9,31 +9,31 @@ namespace Biblioseca.Web.Borrows
 {
     public partial class List : BasePage
     {
-        private readonly BorrowDao borrowDao = new BorrowDao(Global.SessionFactory);
         private readonly BookDao bookDao = new BookDao(Global.SessionFactory);
+        private readonly BorrowDao borrowDao = new BorrowDao(Global.SessionFactory);
         private readonly PartnerDao partnerDao = new PartnerDao(Global.SessionFactory);
 
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
             {
-                this.BindGrid();
-                this.BindLinks();
+                BindGrid();
+                BindLinks();
             }
         }
 
         private void BindLinks()
         {
-            this.CreateNew.NavigateUrl = Const.Pages.Borrow.Create;
-            this.CreateNew.DataBind();
+            CreateNew.NavigateUrl = Const.Pages.Borrow.Create;
+            CreateNew.DataBind();
         }
 
         private void BindGrid()
         {
-            BorrowService borrowService = new BorrowService(this.borrowDao, this.bookDao, this.partnerDao);
+            BorrowService borrowService = new BorrowService(borrowDao, bookDao, partnerDao);
 
-            this.GridViewBorrows.DataSource = borrowService.GetBorrows();
-            this.GridViewBorrows.DataBind();
+            GridViewBorrows.DataSource = borrowService.GetBorrows();
+            GridViewBorrows.DataBind();
         }
     }
 }

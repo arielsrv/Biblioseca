@@ -6,7 +6,7 @@ namespace Biblioseca.Service
 {
     public class CategoryService
     {
-        private readonly CategoryDao categoryDao;   
+        private readonly CategoryDao categoryDao;
 
         public CategoryService(CategoryDao categoryDao)
         {

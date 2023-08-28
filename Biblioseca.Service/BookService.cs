@@ -36,10 +36,10 @@ namespace Biblioseca.Service
             {
                 Stock = true
             };
-            
+
             return this.bookDao.GetByFilter(bookFilterDto);
         }
- 
+
         public void Create(Book book)
         {
             this.bookDao.Save(book);

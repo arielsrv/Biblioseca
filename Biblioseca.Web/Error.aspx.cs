@@ -32,10 +32,7 @@ namespace Biblioseca.Web
             }
 
             // If the exception no longer exists, create a generic exception.
-            if (exception == null)
-            {
-                exception = new Exception(unhandledErrorMsg);
-            }
+            if (exception == null) exception = new Exception(unhandledErrorMsg);
 
             // Show error details to only you (developer). LOCAL ACCESS ONLY.
             if (Request.IsLocal)
@@ -57,10 +54,7 @@ namespace Biblioseca.Web
                 else
                 {
                     InnerMessage.Text = exception.GetType().ToString();
-                    if (exception.StackTrace != null)
-                    {
-                        InnerTrace.Text = exception.StackTrace.TrimStart();
-                    }
+                    if (exception.StackTrace != null) InnerTrace.Text = exception.StackTrace.TrimStart();
                 }
             }
 

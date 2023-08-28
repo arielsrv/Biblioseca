@@ -12,56 +12,53 @@ namespace Biblioseca.Web.Borrows
     public partial class Create : Page
     {
         private readonly BookDao bookDao = new BookDao(Global.SessionFactory);
-        private readonly PartnerDao partnerDao = new PartnerDao(Global.SessionFactory);
         private readonly BorrowDao borrowDao = new BorrowDao(Global.SessionFactory);
+        private readonly PartnerDao partnerDao = new PartnerDao(Global.SessionFactory);
 
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
             {
-                this.BindBooks();
-                this.BindPartners();
-                this.BindLinks();
+                BindBooks();
+                BindPartners();
+                BindLinks();
             }
         }
 
         private void BindLinks()
         {
-            this.BackToList.NavigateUrl = Const.Pages.Borrow.List;
-            this.BackToList.DataBind();
+            BackToList.NavigateUrl = Const.Pages.Borrow.List;
+            BackToList.DataBind();
         }
 
         private void BindPartners()
         {
-            PartnerService partnerService = new PartnerService(this.partnerDao);
-            this.partnerList.DataValueField = nameof(Partner.Id);
-            this.partnerList.DataTextField = nameof(Partner.Fullname);
-            this.partnerList.DataSource = partnerService.GetAll();
-            this.partnerList.DataBind();
+            PartnerService partnerService = new PartnerService(partnerDao);
+            partnerList.DataValueField = nameof(Partner.Id);
+            partnerList.DataTextField = nameof(Partner.Fullname);
+            partnerList.DataSource = partnerService.GetAll();
+            partnerList.DataBind();
         }
 
         private void BindBooks()
         {
-            BookService bookService = new BookService(this.bookDao);
-            this.bookList.DataValueField = nameof(Book.Id);
-            this.bookList.DataTextField = nameof(Book.Title);
-            this.bookList.DataSource = bookService.GetAvailableBooks();
-            this.bookList.DataBind();
+            BookService bookService = new BookService(bookDao);
+            bookList.DataValueField = nameof(Book.Id);
+            bookList.DataTextField = nameof(Book.Title);
+            bookList.DataSource = bookService.GetAvailableBooks();
+            bookList.DataBind();
         }
 
         protected void ButtonCreateBorrow_Click(object sender, EventArgs e)
         {
-            int bookId = this.bookList.SelectedValue.ToInt32();
-            int partnerId = this.partnerList.SelectedValue.ToInt32();
+            int bookId = bookList.SelectedValue.ToInt32();
+            int partnerId = partnerList.SelectedValue.ToInt32();
 
-            BorrowService borrowService = new BorrowService(this.borrowDao, this.bookDao, this.partnerDao);
+            BorrowService borrowService = new BorrowService(borrowDao, bookDao, partnerDao);
 
             BorrowDTO borrowDto = borrowService.BorrowABookForPartner(bookId, partnerId);
 
-            if (borrowDto.HasError)
-            {
-                Response.Redirect(Const.Pages.Borrow.BusinessError);
-            }
+            if (borrowDto.HasError) Response.Redirect(Const.Pages.Borrow.BusinessError);
 
             Response.Redirect(Const.Pages.Borrow.Congrats);
         }

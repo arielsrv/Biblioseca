@@ -1,41 +1,41 @@
+using System.Collections.Generic;
+using System.Linq;
 using Biblioseca.DataAccess.Borrows;
 using Biblioseca.Model;
 using NHibernate;
 using NHibernate.Cfg;
 using NHibernate.Context;
 using NUnit.Framework;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace Biblioseca.Test.DataAccess
 {
     [TestFixture]
     public class BorrowDaoTest
     {
-        private ISessionFactory sessionFactory;
-        private ISession session;
-        private ITransaction transaction;
-
         [SetUp]
         public void SetUp()
         {
-            this.sessionFactory = new Configuration().Configure().BuildSessionFactory();
-            this.session = this.sessionFactory.OpenSession();
-            this.transaction = this.session.BeginTransaction();
-            CurrentSessionContext.Bind(this.session);
+            sessionFactory = new Configuration().Configure().BuildSessionFactory();
+            session = sessionFactory.OpenSession();
+            transaction = session.BeginTransaction();
+            CurrentSessionContext.Bind(session);
         }
 
         [TearDown]
         public void CleanUp()
         {
-            this.transaction.Rollback();
-            this.session.Close();
+            transaction.Rollback();
+            session.Close();
         }
+
+        private ISessionFactory sessionFactory;
+        private ISession session;
+        private ITransaction transaction;
 
         [Test]
         public void GetAll()
         {
-            BorrowDao borrowDao = new BorrowDao(this.sessionFactory);
+            BorrowDao borrowDao = new BorrowDao(sessionFactory);
 
             IEnumerable<Borrow> borrows = borrowDao.GetAll();
 
@@ -45,7 +45,7 @@ namespace Biblioseca.Test.DataAccess
         [Test]
         public void GetByBook()
         {
-            BorrowDao borrowDao = new BorrowDao(this.sessionFactory);
+            BorrowDao borrowDao = new BorrowDao(sessionFactory);
 
             IEnumerable<Borrow> borrows = borrowDao.GetBorrowsByBookId(1);
 
@@ -55,7 +55,7 @@ namespace Biblioseca.Test.DataAccess
         [Test]
         public void GetAllByBookAndPartner()
         {
-            BorrowDao borrowDao = new BorrowDao(this.sessionFactory);
+            BorrowDao borrowDao = new BorrowDao(sessionFactory);
 
             IEnumerable<Borrow> borrows = borrowDao.GetBorrows(1, 1);
 
@@ -65,7 +65,7 @@ namespace Biblioseca.Test.DataAccess
         [Test]
         public void GetByBookAndPartner()
         {
-            BorrowDao borrowDao = new BorrowDao(this.sessionFactory);
+            BorrowDao borrowDao = new BorrowDao(sessionFactory);
 
             Borrow borrow = borrowDao.GetBorrow(199, 139);
 

@@ -1,10 +1,10 @@
-﻿using NHibernate;
-using NHibernate.Cfg;
-using NHibernate.Context;
-using System;
+﻿using System;
 using System.Web;
 using System.Web.Optimization;
 using System.Web.Routing;
+using NHibernate;
+using NHibernate.Cfg;
+using NHibernate.Context;
 
 namespace Biblioseca.Web
 {
@@ -46,13 +46,11 @@ namespace Biblioseca.Web
             Exception exception = Server.GetLastError();
 
             if (exception is HttpUnhandledException)
-            {
                 if (exception.InnerException != null)
                 {
                     exception = new Exception(exception.InnerException.Message);
                     Server.Transfer("../Error.aspx?handler=Application_Error%20-%20Global.asax", true);
                 }
-            }
         }
     }
 }

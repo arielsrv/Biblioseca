@@ -1,5 +1,4 @@
 using System;
-using System.Web.UI;
 using Biblioseca.Web.Common;
 
 namespace Biblioseca.Web.Borrows
@@ -8,16 +7,13 @@ namespace Biblioseca.Web.Borrows
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!Page.IsPostBack)
-            {
-                this.BindLinks();
-            }
+            if (!Page.IsPostBack) BindLinks();
         }
 
         private void BindLinks()
         {
-            this.BackToList.NavigateUrl = Const.Pages.Borrow.List;
-            this.BackToList.DataBind();
+            BackToList.NavigateUrl = Const.Pages.Borrow.List;
+            BackToList.DataBind();
         }
     }
 }

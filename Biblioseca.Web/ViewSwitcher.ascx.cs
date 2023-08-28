@@ -1,10 +1,7 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Web;
 using System.Web.Routing;
 using System.Web.UI;
-using System.Web.UI.WebControls;
 using Microsoft.AspNet.FriendlyUrls.Resolvers;
 
 namespace Biblioseca.Web
@@ -32,7 +29,7 @@ namespace Biblioseca.Web
             if (switchViewRoute == null)
             {
                 // Friendly URLs is not enabled or the name of the switch view route is out of sync
-                this.Visible = false;
+                Visible = false;
                 return;
             }
 

@@ -25,7 +25,7 @@ namespace Biblioseca.ConsoleApp
 
             BorrowService borrowService = new BorrowService(borrowDao, bookDao, partnerDao);
 
-            borrowService.BorrowABook(527, 1);            
+            borrowService.BorrowABook(527, 1);
         }
     }
 }

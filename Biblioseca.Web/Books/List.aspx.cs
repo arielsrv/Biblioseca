@@ -1,10 +1,10 @@
-﻿using Biblioseca.DataAccess.Books;
+﻿using System;
+using System.Web.UI.WebControls;
+using Biblioseca.DataAccess.Books;
 using Biblioseca.Model;
 using Biblioseca.Model.Exceptions;
 using Biblioseca.Service;
 using Biblioseca.Web.Common;
-using System;
-using System.Web.UI.WebControls;
 
 namespace Biblioseca.Web.Books
 {
@@ -14,18 +14,15 @@ namespace Biblioseca.Web.Books
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!this.IsPostBack)
-            {
-                this.BindGrid();
-            }
+            if (!IsPostBack) BindGrid();
         }
 
         private void BindGrid()
         {
             BookService bookService = new BookService(bookDao);
 
-            this.GridViewBooks.DataSource = bookService.GetAll();
-            this.GridViewBooks.DataBind();
+            GridViewBooks.DataSource = bookService.GetAll();
+            GridViewBooks.DataBind();
         }
 
         protected void LinkCreateBook_OnClick(object sender, EventArgs e)
@@ -35,18 +32,18 @@ namespace Biblioseca.Web.Books
 
         protected void GridViewBooks_RowEditing(object sender, GridViewEditEventArgs e)
         {
-            int authorId = Convert.ToInt32(this.GridViewBooks.DataKeys[e.NewEditIndex]?.Values?[0]);
+            int authorId = Convert.ToInt32(GridViewBooks.DataKeys[e.NewEditIndex]?.Values?[0]);
             Response.Redirect(string.Format(Const.Pages.Author.Edit, authorId));
         }
 
         protected void GridViewBooks_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
-            int bookId = Convert.ToInt32(this.GridViewBooks.DataKeys[e.RowIndex]?.Values?[0]);
-            Book book = this.bookDao.Get(bookId);
+            int bookId = Convert.ToInt32(GridViewBooks.DataKeys[e.RowIndex]?.Values?[0]);
+            Book book = bookDao.Get(bookId);
             Ensure.NotNull(book, "Libro no existe. ");
-            this.bookDao.Delete(book);
-            this.BindGrid();
-            this.PageReload();
+            bookDao.Delete(book);
+            BindGrid();
+            PageReload();
         }
     }
 }

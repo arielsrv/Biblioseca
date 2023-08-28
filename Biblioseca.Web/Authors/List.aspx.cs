@@ -14,18 +14,15 @@ namespace Biblioseca.Web.Authors
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!this.IsPostBack)
-            {
-                this.BindGrid();
-            }
+            if (!IsPostBack) BindGrid();
         }
 
         private void BindGrid()
         {
             AuthorService authorService = new AuthorService(authorDao);
 
-            this.GridViewAuthors.DataSource = authorService.GetAll();
-            this.GridViewAuthors.DataBind();
+            GridViewAuthors.DataSource = authorService.GetAll();
+            GridViewAuthors.DataBind();
         }
 
         protected void LinkCreateNewAuthor_OnClick(object sender, EventArgs e)
@@ -35,18 +32,18 @@ namespace Biblioseca.Web.Authors
 
         protected void GridViewAuthors_RowEditing(object sender, GridViewEditEventArgs e)
         {
-            int authorId = Convert.ToInt32(this.GridViewAuthors.DataKeys[e.NewEditIndex]?.Values?[0]);
+            int authorId = Convert.ToInt32(GridViewAuthors.DataKeys[e.NewEditIndex]?.Values?[0]);
             Response.Redirect(string.Format(Const.Pages.Author.Edit, authorId));
         }
 
         protected void GridViewAuthors_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
-            int authorId = Convert.ToInt32(this.GridViewAuthors.DataKeys[e.RowIndex]?.Values?[0]);
-            Author author = this.authorDao.Get(authorId);
+            int authorId = Convert.ToInt32(GridViewAuthors.DataKeys[e.RowIndex]?.Values?[0]);
+            Author author = authorDao.Get(authorId);
             Ensure.NotNull(author, "Author no existe. ");
-            this.authorDao.Delete(author);
-            this.BindGrid();
-            this.PageReload();
+            authorDao.Delete(author);
+            BindGrid();
+            PageReload();
         }
     }
 }

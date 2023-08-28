@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Linq;
 using Biblioseca.DataAccess.Books;
 using Biblioseca.DataAccess.Books.Filters;
 using Biblioseca.Model;
@@ -5,31 +7,29 @@ using Biblioseca.Service;
 using Moq;
 using NHibernate;
 using NUnit.Framework;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace Biblioseca.Test.Services
 {
     [TestFixture]
     public class BookServiceTest
     {
-        private Mock<BookDao> bookDao;
-        private Mock<ISessionFactory> sessionFactory;
-
         [SetUp]
         public void SetUp()
         {
-            this.sessionFactory = new Mock<ISessionFactory>();
-            this.bookDao = new Mock<BookDao>(this.sessionFactory.Object);
+            sessionFactory = new Mock<ISessionFactory>();
+            bookDao = new Mock<BookDao>(sessionFactory.Object);
         }
+
+        private Mock<BookDao> bookDao;
+        private Mock<ISessionFactory> sessionFactory;
 
         [Test]
         public void IsAvailable()
         {
             const int bookId = 1;
-            this.bookDao.Setup(dao => dao.Get(bookId)).Returns(GetBook(1));
+            bookDao.Setup(dao => dao.Get(bookId)).Returns(GetBook(1));
 
-            BookService bookService = new BookService(this.bookDao.Object);
+            BookService bookService = new BookService(bookDao.Object);
 
             bool isAvailable = bookService.IsAvailable(bookId);
             Assert.IsTrue(isAvailable);
@@ -39,9 +39,9 @@ namespace Biblioseca.Test.Services
         public void IsNotAvailable()
         {
             const int bookId = 1;
-            this.bookDao.Setup(dao => dao.Get(1)).Returns(GetBook(0));
+            bookDao.Setup(dao => dao.Get(1)).Returns(GetBook(0));
 
-            BookService bookService = new BookService(this.bookDao.Object);
+            BookService bookService = new BookService(bookDao.Object);
 
             bool isAvailable = bookService.IsAvailable(bookId);
             Assert.IsFalse(isAvailable);
@@ -50,9 +50,9 @@ namespace Biblioseca.Test.Services
         [Test]
         public void GetAvailableBooks()
         {
-            this.bookDao.Setup(dao => dao.GetByFilter(It.IsAny<BookFilterDto>())).Returns(GetBooks());
+            bookDao.Setup(dao => dao.GetByFilter(It.IsAny<BookFilterDto>())).Returns(GetBooks());
 
-            BookService bookService = new BookService(this.bookDao.Object);
+            BookService bookService = new BookService(bookDao.Object);
 
             IEnumerable<Book> books = bookService.GetAvailableBooks();
 

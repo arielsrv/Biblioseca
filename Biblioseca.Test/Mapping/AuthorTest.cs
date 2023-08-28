@@ -1,32 +1,32 @@
-﻿using Biblioseca.Model;
+﻿using System;
+using Biblioseca.Model;
 using NHibernate;
 using NHibernate.Cfg;
 using NUnit.Framework;
-using System;
 
 namespace Biblioseca.Test.Mapping
 {
     [TestFixture]
     public class AuthorTests
     {
-        private ISessionFactory sessionFactory;
-        private ISession session;
-        private ITransaction transaction;
-
         [SetUp]
         public void SetUp()
         {
-            this.sessionFactory = new Configuration().Configure().BuildSessionFactory();
-            this.session = this.sessionFactory.OpenSession();
-            this.transaction = this.session.BeginTransaction();
+            sessionFactory = new Configuration().Configure().BuildSessionFactory();
+            session = sessionFactory.OpenSession();
+            transaction = session.BeginTransaction();
         }
 
         [TearDown]
         public void CleanUp()
         {
-            this.transaction.Rollback();
-            this.session.Close();
+            transaction.Rollback();
+            session.Close();
         }
+
+        private ISessionFactory sessionFactory;
+        private ISession session;
+        private ITransaction transaction;
 
         [Test]
         public void CreateAuthor()
@@ -37,13 +37,13 @@ namespace Biblioseca.Test.Mapping
                 LastName = "Maximoff"
             };
 
-            this.session.Save(author);
-            this.session.Flush();
-            this.session.Clear();
+            session.Save(author);
+            session.Flush();
+            session.Clear();
 
             Assert.IsTrue(author.Id > 0);
 
-            Author created = this.session.Get<Author>(author.Id);
+            Author created = session.Get<Author>(author.Id);
 
             Assert.AreEqual(author.Id, created.Id);
         }
@@ -57,18 +57,18 @@ namespace Biblioseca.Test.Mapping
                 LastName = "Maximoff"
             };
 
-            this.session.Save(author);
-            this.session.Flush();
-            this.session.Clear();
+            session.Save(author);
+            session.Flush();
+            session.Clear();
 
             Category category = new Category
             {
                 Name = "Adventure"
             };
 
-            this.session.Save(category);
-            this.session.Flush();
-            this.session.Clear();
+            session.Save(category);
+            session.Flush();
+            session.Clear();
 
             Book book1 = new Book
             {
@@ -80,9 +80,9 @@ namespace Biblioseca.Test.Mapping
                 ISBN = "123-456-7890"
             };
 
-            this.session.Save(book1);
-            this.session.Flush();
-            this.session.Clear();
+            session.Save(book1);
+            session.Flush();
+            session.Clear();
 
             Book book2 = new Book
             {
@@ -94,9 +94,9 @@ namespace Biblioseca.Test.Mapping
                 ISBN = "123-456-7890"
             };
 
-            this.session.Save(book2);
-            this.session.Flush();
-            this.session.Clear();
+            session.Save(book2);
+            session.Flush();
+            session.Clear();
 
             Partner partner = new Partner
             {
@@ -105,9 +105,9 @@ namespace Biblioseca.Test.Mapping
                 LastName = "Musk"
             };
 
-            this.session.Save(partner);
-            this.session.Flush();
-            this.session.Clear();
+            session.Save(partner);
+            session.Flush();
+            session.Clear();
 
             Borrow borrow1 = new Borrow
             {
@@ -128,11 +128,11 @@ namespace Biblioseca.Test.Mapping
             partner.Borrows.Add(borrow1);
             partner.Borrows.Add(borrow2);
 
-            this.session.SaveOrUpdate(partner);
-            this.session.Flush();
-            this.session.Clear();
+            session.SaveOrUpdate(partner);
+            session.Flush();
+            session.Clear();
 
-            Partner createdPartner = this.session.Get<Partner>(partner.Id);
+            Partner createdPartner = session.Get<Partner>(partner.Id);
 
             Assert.IsNotNull(createdPartner);
             Assert.IsNotNull(createdPartner.Borrows);

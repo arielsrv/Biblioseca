@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Linq;
 using Biblioseca.DataAccess.Books;
 using Biblioseca.DataAccess.Books.Filters;
 using Biblioseca.Model;
@@ -5,38 +7,36 @@ using NHibernate;
 using NHibernate.Cfg;
 using NHibernate.Context;
 using NUnit.Framework;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace Biblioseca.Test.DataAccess
 {
     [TestFixture]
     public class BookDaoTest
     {
-        private ISessionFactory sessionFactory;
-        private ISession session;
-        private ITransaction transaction;
-
         [SetUp]
         public void SetUp()
         {
-            this.sessionFactory = new Configuration().Configure().BuildSessionFactory();
-            this.session = this.sessionFactory.OpenSession();
-            this.transaction = this.session.BeginTransaction();
-            CurrentSessionContext.Bind(this.session);
+            sessionFactory = new Configuration().Configure().BuildSessionFactory();
+            session = sessionFactory.OpenSession();
+            transaction = session.BeginTransaction();
+            CurrentSessionContext.Bind(session);
         }
 
         [TearDown]
         public void CleanUp()
         {
-            this.transaction.Rollback();
-            this.session.Close();
+            transaction.Rollback();
+            session.Close();
         }
+
+        private ISessionFactory sessionFactory;
+        private ISession session;
+        private ITransaction transaction;
 
         [Test]
         public void GetAll()
         {
-            BookDao bookDao = new BookDao(this.sessionFactory);
+            BookDao bookDao = new BookDao(sessionFactory);
 
             IEnumerable<Book> books = bookDao.GetAll();
 
@@ -46,7 +46,7 @@ namespace Biblioseca.Test.DataAccess
         [Test]
         public void GetByFilter()
         {
-            BookDao bookDao = new BookDao(this.sessionFactory);
+            BookDao bookDao = new BookDao(sessionFactory);
 
             BookFilterDto bookFilterDto = new BookFilterDto
             {

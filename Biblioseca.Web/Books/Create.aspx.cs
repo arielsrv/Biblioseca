@@ -1,27 +1,24 @@
-﻿using Biblioseca.DataAccess.Authors;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using Biblioseca.DataAccess.Authors;
 using Biblioseca.DataAccess.Books;
 using Biblioseca.DataAccess.Categories;
 using Biblioseca.Model;
 using Biblioseca.Service;
 using Biblioseca.Web.Common;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace Biblioseca.Web.Books
 {
     public partial class Create : BasePage
     {
-        private readonly BookDao bookDao = new BookDao(Global.SessionFactory);
         private readonly AuthorDao authorDao = new AuthorDao(Global.SessionFactory);
+        private readonly BookDao bookDao = new BookDao(Global.SessionFactory);
         private readonly CategoryDao categoryDao = new CategoryDao(Global.SessionFactory);
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!this.IsPostBack)
-            {
-                this.BindData();
-            }
+            if (!IsPostBack) BindData();
         }
 
         private void BindData()
@@ -32,48 +29,48 @@ namespace Biblioseca.Web.Books
 
         private void BindCategories()
         {
-            CategoryService categoryService = new CategoryService(this.categoryDao);
+            CategoryService categoryService = new CategoryService(categoryDao);
             IEnumerable<Category> categories = categoryService.GetAll();
 
-            this.categoryList.DataTextField = "value";
-            this.categoryList.DataValueField = "key";
-            this.categoryList.DataSource = categories
+            categoryList.DataTextField = "value";
+            categoryList.DataValueField = "key";
+            categoryList.DataSource = categories
                 .ToDictionary(category => category.Id, category => $"{category.Name}");
-            this.categoryList.DataBind();
+            categoryList.DataBind();
         }
 
         private void BindAuthors()
         {
-            AuthorService authorService = new AuthorService(this.authorDao);
+            AuthorService authorService = new AuthorService(authorDao);
             IEnumerable<Author> authors = authorService.GetAll();
 
-            this.authorList.DataTextField = "value";
-            this.authorList.DataValueField = "key";
-            this.authorList.DataSource = authors
+            authorList.DataTextField = "value";
+            authorList.DataValueField = "key";
+            authorList.DataSource = authors
                 .ToDictionary(author => author.Id, author => $"{author.FirstName} {author.LastName}");
-            this.authorList.DataBind();
+            authorList.DataBind();
         }
 
         protected void ButtonCreateAuthor_Click(object sender, EventArgs e)
         {
-            BookService bookService = new BookService(this.bookDao);
+            BookService bookService = new BookService(bookDao);
 
-            CategoryService categoryService = new CategoryService(this.categoryDao);
-            Category category = categoryService.Get(Convert.ToInt32(this.categoryList.SelectedValue));
+            CategoryService categoryService = new CategoryService(categoryDao);
+            Category category = categoryService.Get(Convert.ToInt32(categoryList.SelectedValue));
 
-            AuthorService authorService = new AuthorService(this.authorDao);
-            Author author = authorService.Get(Convert.ToInt32(this.authorList.SelectedValue));
+            AuthorService authorService = new AuthorService(authorDao);
+            Author author = authorService.Get(Convert.ToInt32(authorList.SelectedValue));
 
             Book book = Book.Create
-                (
-                    this.textBoxTitle.Text,
-                    this.textBoxDescription.Text,
-                    this.textBoxISBN.Text,
-                    Convert.ToDouble(this.textBoxPrice.Text),
-                    category,
-                    author,
-                    Convert.ToInt32(this.textBoxStock.Text)
-                );
+            (
+                textBoxTitle.Text,
+                textBoxDescription.Text,
+                textBoxISBN.Text,
+                Convert.ToDouble(textBoxPrice.Text),
+                category,
+                author,
+                Convert.ToInt32(textBoxStock.Text)
+            );
 
             bookService.Create(book);
 

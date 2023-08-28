@@ -1,5 +1,5 @@
-using Biblioseca.Model.Exceptions;
 using System;
+using Biblioseca.Model.Exceptions;
 
 namespace Biblioseca.Model
 {
@@ -11,7 +11,7 @@ namespace Biblioseca.Model
         public virtual DateTime? ReturnedAt { get; set; }
 
         /// <summary>
-        /// Creates the specified book.
+        ///     Creates the specified book.
         /// </summary>
         /// <param name="book">The book.</param>
         /// <param name="partner">The partner.</param>

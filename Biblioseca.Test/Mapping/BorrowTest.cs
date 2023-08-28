@@ -1,32 +1,32 @@
+using System;
 using Biblioseca.Model;
 using NHibernate;
 using NHibernate.Cfg;
 using NUnit.Framework;
-using System;
 
 namespace Biblioseca.Test.Mapping
 {
     [TestFixture]
     public class BorrowTest
     {
-        private ISessionFactory sessionFactory;
-        private ISession session;
-        private ITransaction transaction;
-
         [SetUp]
         public void SetUp()
         {
-            this.sessionFactory = new Configuration().Configure().BuildSessionFactory();
-            this.session = this.sessionFactory.OpenSession();
-            this.transaction = this.session.BeginTransaction();
+            sessionFactory = new Configuration().Configure().BuildSessionFactory();
+            session = sessionFactory.OpenSession();
+            transaction = session.BeginTransaction();
         }
 
         [TearDown]
         public void CleanUp()
         {
-            this.transaction.Rollback();
-            this.session.Close();
+            transaction.Rollback();
+            session.Close();
         }
+
+        private ISessionFactory sessionFactory;
+        private ISession session;
+        private ITransaction transaction;
 
         [Test]
         public void CreateBorrow()
@@ -37,18 +37,18 @@ namespace Biblioseca.Test.Mapping
                 LastName = "Maximoff"
             };
 
-            this.session.Save(author);
-            this.session.Flush();
-            this.session.Clear();
+            session.Save(author);
+            session.Flush();
+            session.Clear();
 
             Category category = new Category
             {
                 Name = "Adventure"
             };
 
-            this.session.Save(category);
-            this.session.Flush();
-            this.session.Clear();
+            session.Save(category);
+            session.Flush();
+            session.Clear();
 
             Book book = new Book
             {
@@ -60,9 +60,9 @@ namespace Biblioseca.Test.Mapping
                 ISBN = "123-456-7890"
             };
 
-            this.session.Save(book);
-            this.session.Flush();
-            this.session.Clear();
+            session.Save(book);
+            session.Flush();
+            session.Clear();
 
             Partner partner = new Partner
             {
@@ -71,9 +71,9 @@ namespace Biblioseca.Test.Mapping
                 LastName = "Musk"
             };
 
-            this.session.Save(partner);
-            this.session.Flush();
-            this.session.Clear();
+            session.Save(partner);
+            session.Flush();
+            session.Clear();
 
             Borrow borrow = new Borrow
             {
@@ -83,11 +83,11 @@ namespace Biblioseca.Test.Mapping
                 ReturnedAt = DateTime.Now.AddDays(2)
             };
 
-            this.session.Save(borrow);
+            session.Save(borrow);
 
             Assert.IsTrue(author.Id > 0);
 
-            Borrow created = this.session.Get<Borrow>(borrow.Id);
+            Borrow created = session.Get<Borrow>(borrow.Id);
 
             Assert.AreEqual(borrow.Id, created.Id);
             Assert.AreEqual(borrow.Partner.Id, partner.Id);

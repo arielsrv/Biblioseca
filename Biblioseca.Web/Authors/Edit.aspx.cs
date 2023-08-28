@@ -1,9 +1,9 @@
-﻿using Biblioseca.DataAccess.Authors;
+﻿using System;
+using Biblioseca.DataAccess.Authors;
 using Biblioseca.Model;
 using Biblioseca.Model.Exceptions;
 using Biblioseca.Service;
 using Biblioseca.Web.Common;
-using System;
 
 namespace Biblioseca.Web.Authors
 {
@@ -14,32 +14,29 @@ namespace Biblioseca.Web.Authors
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            this.authorId = Convert.ToInt32(Request.QueryString.Get("id"));
+            authorId = Convert.ToInt32(Request.QueryString.Get("id"));
 
-            if (!this.IsPostBack)
-            {
-                this.BindAuthor();
-            }
+            if (!IsPostBack) BindAuthor();
         }
 
         private void BindAuthor()
         {
-            AuthorService authorService = new AuthorService(this.authorDao);
-            Author author = authorService.Get(this.authorId);
+            AuthorService authorService = new AuthorService(authorDao);
+            Author author = authorService.Get(authorId);
             Ensure.NotNull(author, "Author no existe. ");
 
-            this.textBoxFirstName.Text = author.FirstName;
-            this.textBoxLastName.Text = author.LastName;
+            textBoxFirstName.Text = author.FirstName;
+            textBoxLastName.Text = author.LastName;
         }
 
         protected void ButtonEditAuthor_Click(object sender, EventArgs e)
         {
             AuthorService authorService = new AuthorService(authorDao);
-            Author author = authorService.Get(this.authorId);
+            Author author = authorService.Get(authorId);
             Ensure.NotNull(author, "Author no existe. ");
 
-            author.SetFirstName(this.textBoxFirstName.Text);
-            author.SetLastName(this.textBoxLastName.Text);
+            author.SetFirstName(textBoxFirstName.Text);
+            author.SetLastName(textBoxLastName.Text);
 
             authorService.Update(author);
 
