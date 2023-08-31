@@ -3,7 +3,7 @@ updates:
   - package-ecosystem: "nuget"
     directory: "/Biblioseca.ConsoleApp"
     schedule:
-      interval: "daily"   
+      interval: "daily"
   - package-ecosystem: "nuget"
     directory: "/Biblioseca.DataAccess"
     schedule:
@@ -12,18 +12,18 @@ updates:
     directory: "/Biblioseca.Model"
     schedule:
       interval: "daily"
-  - package-ecosystem: "nuget"
-    directory: "/Biblioseca.Service"
-    schedule:
-      interval: "daily"
+  #  - package-ecosystem: "nuget"
+  #    directory: "/Biblioseca.Service"
+  #    schedule:
+  #      interval: "daily"
   - package-ecosystem: "nuget"
     directory: "/Biblioseca.Test"
     schedule:
-      interval: "daily"      
+      interval: "daily"
   - package-ecosystem: "nuget"
     directory: "/Biblioseca.Web"
     schedule:
-      interval: "daily"      
+      interval: "daily"
   - package-ecosystem: github-actions
     directory: /
     schedule:
