@@ -32,7 +32,7 @@ namespace Biblioseca.Test.Services
             BookService bookService = new BookService(bookDao.Object);
 
             bool isAvailable = bookService.IsAvailable(bookId);
-            Assert.IsTrue(isAvailable);
+            Assert.That(isAvailable);
         }
 
         [Test]
@@ -44,7 +44,7 @@ namespace Biblioseca.Test.Services
             BookService bookService = new BookService(bookDao.Object);
 
             bool isAvailable = bookService.IsAvailable(bookId);
-            Assert.IsFalse(isAvailable);
+            Assert.That(isAvailable);
         }
 
         [Test]
@@ -56,7 +56,7 @@ namespace Biblioseca.Test.Services
 
             IEnumerable<Book> books = bookService.GetAvailableBooks();
 
-            Assert.IsTrue(books.Any());
+            Assert.That(books.Any());
         }
 
         private static IEnumerable<Book> GetBooks()

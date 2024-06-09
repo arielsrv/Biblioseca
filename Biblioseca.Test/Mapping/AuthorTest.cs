@@ -41,11 +41,11 @@ namespace Biblioseca.Test.Mapping
             session.Flush();
             session.Clear();
 
-            Assert.IsTrue(author.Id > 0);
+            Assert.That(author.Id > 0);
 
             Author created = session.Get<Author>(author.Id);
 
-            Assert.AreEqual(author.Id, created.Id);
+            Assert.Equals(author.Id, created.Id);
         }
 
         [Test]
@@ -134,9 +134,9 @@ namespace Biblioseca.Test.Mapping
 
             Partner createdPartner = session.Get<Partner>(partner.Id);
 
-            Assert.IsNotNull(createdPartner);
-            Assert.IsNotNull(createdPartner.Borrows);
-            Assert.AreEqual(2, createdPartner.Borrows.Count);
+            Assert.That(createdPartner != null);
+            Assert.That(createdPartner.Borrows != null);
+            Assert.Equals(createdPartner.Borrows.Count, 2);
         }
     }
 }

@@ -48,7 +48,7 @@ namespace Biblioseca.Test.Services
 
             Borrow borrow = borrowService.BorrowABook(bookId, partnerId);
 
-            Assert.IsNotNull(borrow);
+            Assert.That(borrow != null);
         }
 
         [Test]
@@ -110,7 +110,7 @@ namespace Biblioseca.Test.Services
 
             bool returned = borrowService.Returns(bookId, partnerId);
 
-            Assert.IsTrue(returned);
+            Assert.That(returned);
         }
 
         private static Borrow GetBorrow()

@@ -39,7 +39,7 @@ namespace Biblioseca.Test.DataAccess
 
             IEnumerable<Author> authors = authorDao.GetAll();
 
-            Assert.IsTrue(authors.Any());
+            Assert.That(authors.Any());
         }
 
         [Test]
@@ -54,8 +54,8 @@ namespace Biblioseca.Test.DataAccess
 
             Author author = authorDao.GetUniqueByHqlQuery("FROM Author WHERE FirstName LIKE :FirstName", parameters);
 
-            Assert.IsNotNull(author);
-            Assert.AreEqual("Steve", author.FirstName);
+            Assert.That(author != null);
+            Assert.Equals("Steve", author.FirstName);
         }
 
         [Test]
@@ -70,8 +70,8 @@ namespace Biblioseca.Test.DataAccess
 
             Author author = authorDao.GetUniqueByQuery(parameters);
 
-            Assert.IsNotNull(author);
-            Assert.AreEqual("Steve", author.FirstName);
+            Assert.That(author != null);
+            Assert.Equals("Steve", author.FirstName);
         }
     }
 }

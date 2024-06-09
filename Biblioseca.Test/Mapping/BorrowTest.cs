@@ -85,13 +85,13 @@ namespace Biblioseca.Test.Mapping
 
             session.Save(borrow);
 
-            Assert.IsTrue(author.Id > 0);
+            Assert.That(author.Id > 0);
 
             Borrow created = session.Get<Borrow>(borrow.Id);
 
-            Assert.AreEqual(borrow.Id, created.Id);
-            Assert.AreEqual(borrow.Partner.Id, partner.Id);
-            Assert.AreEqual(borrow.Book.Id, book.Id);
+            Assert.Equals(borrow.Id, created.Id);
+            Assert.Equals(borrow.Partner.Id, partner.Id);
+            Assert.Equals(borrow.Book.Id, book.Id);
         }
     }
 }

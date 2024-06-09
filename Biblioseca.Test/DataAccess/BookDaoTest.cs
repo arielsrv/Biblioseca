@@ -40,7 +40,7 @@ namespace Biblioseca.Test.DataAccess
 
             IEnumerable<Book> books = bookDao.GetAll();
 
-            Assert.IsTrue(books.Any());
+            Assert.That(books.Any());
         }
 
         [Test]
@@ -56,7 +56,7 @@ namespace Biblioseca.Test.DataAccess
 
             IEnumerable<Book> books = bookDao.GetByFilter(bookFilterDto);
 
-            Assert.IsTrue(books.Any());
+            Assert.That(books.Any());
         }
     }
 }

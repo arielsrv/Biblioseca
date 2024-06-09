@@ -39,7 +39,7 @@ namespace Biblioseca.Test.DataAccess
 
             IEnumerable<Borrow> borrows = borrowDao.GetAll();
 
-            Assert.IsTrue(borrows.Any());
+            Assert.That(borrows.Any());
         }
 
         [Test]
@@ -49,7 +49,7 @@ namespace Biblioseca.Test.DataAccess
 
             IEnumerable<Borrow> borrows = borrowDao.GetBorrowsByBookId(1);
 
-            Assert.IsTrue(borrows.Any());
+            Assert.That(borrows.Any());
         }
 
         [Test]
@@ -59,7 +59,7 @@ namespace Biblioseca.Test.DataAccess
 
             IEnumerable<Borrow> borrows = borrowDao.GetBorrows(1, 1);
 
-            Assert.IsTrue(borrows.Any());
+            Assert.That(borrows.Any());
         }
 
         [Test]
@@ -69,7 +69,7 @@ namespace Biblioseca.Test.DataAccess
 
             Borrow borrow = borrowDao.GetBorrow(199, 139);
 
-            Assert.IsNotNull(borrow);
+            Assert.That(borrow != null);
         }
     }
 }
